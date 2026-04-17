@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://generativelanguage.googleapis.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+  <title>FamilyGuard AI — Pre-Disease Interception Engine</title>
+  <meta name="description" content="AI-powered health risk awareness tool using Indian-standard thresholds. Not a medical diagnosis tool.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+<!-- ─── Loader ─────────────────────────────────────────────────────────────── -->
+<div id="loader-overlay">
+  <div class="loader-spinner"></div>
+  <div class="loader-message">Analyzing...</div>
+</div>
+
+<!-- ─── App Wrapper ────────────────────────────────────────────────────────── -->
+<div class="app-wrapper">
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-text">
+        <h1>Family<span>Guard</span> AI</h1>
+        <div class="brand-tagline">Pre-Disease Interception Engine</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-demo" id="btn-demo">▶ Run Demo</button>
+      <button class="btn btn-secondary" data-nav="section-family">
+        👨‍👩‍👧 Family <span class="family-badge" id="family-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Safety Banner (always visible) -->
+  <div class="safety-banner">
+    <span class="safety-icon">⚠️</span>
+    <span>
+      <strong>Medical Disclaimer:</strong> FamilyGuard AI is a health risk <em>awareness</em> tool only — it is NOT a diagnostic tool.
+      All results are for informational purposes. Always consult a qualified physician for medical decisions.
+      No medication advice is provided or implied.
+    </span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <button class="nav-btn active" data-nav="section-home" onclick="switchNav(this)">🏠 Home</button>
+    <button class="nav-btn" data-nav="section-upload" onclick="switchNav(this)">📋 Upload Report</button>
+    <button class="nav-btn" data-nav="section-input" onclick="switchNav(this)">📝 Enter Data</button>
+    <button class="nav-btn" data-nav="section-results" onclick="switchNav(this)">📊 Results</button>
+    <button class="nav-btn" data-nav="section-family" onclick="switchNav(this)">👨‍👩‍👧 Family</button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION: HOME -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="section-home" class="section active">
+
+    <div class="hero">
+      <h2>Catch Disease Before<br><span class="accent">It Catches You</span></h2>
+      <p>FamilyGuard AI analyzes your lab reports using Indian-standard thresholds to detect pre-disease patterns that standard reports miss — often years before symptoms appear.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" onclick="switchToSection('section-upload')">
+          📤 Upload Lab Report
+        </button>
+        <button class="btn btn-secondary btn-lg" onclick="switchToSection('section-input')">
+          ✍️ Enter Manually
+        </button>
+        <button class="btn btn-demo btn-lg" id="btn-demo-hero">▶ Run Demo</button>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-val">72%</div>
+        <div class="stat-label">Indians are Vitamin D deficient</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">96+</div>
+        <div class="stat-label">mg/dL — Indian pre-diabetes threshold</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">80%</div>
+        <div class="stat-label">Of T2D cases are preventable</div>
+      </div>
+    </div>
+
+    <div style="font-size:10px;color:var(--text-dim);text-align:center;margin:-10px 0 22px;">
+      Source notes: ICMR-ININDIAB and Indian public-health reports for prevalence context; intervention-preventability statistic shown as directional awareness estimate.
+      See README Clinical References for full links.
+    </div>
+
+    <!-- API Key Card -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🔑</span> Gemini AI Integration (Optional)</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">
+        Add your Gemini API key to enable AI-powered lab extraction from photos/PDFs and personalized narrative generation.
+        Without a key, the app works fully in Demo Mode with all features enabled.
+      </p>
+      <div class="api-key-row">
+        <input type="password" id="api-key-input" placeholder="Enter Gemini API key (AIza...)" autocomplete="off">
+        <button class="btn btn-primary" id="btn-save-key">Set Key</button>
+      </div>
+      <div id="api-status" style="font-size:11px;color:var(--text-muted)">
+        ⚪ No API key set — Demo mode available
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="card">
+      <div class="card-title"><span class="icon">⚙️</span> How It Works</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
+          <div style="font-size:24px;margin-bottom:8px;">📤</div>
+          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">1. Upload</div>
+          <div style="font-size:11px;color:var(--text-muted)">Upload your lab report (PDF/image) or enter values manually</div>
+        </div>
+        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
+          <div style="font-size:24px;margin-bottom:8px;">🧬</div>
+          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">2. Extract</div>
+          <div style="font-size:11px;color:var(--text-muted)">AI extracts all lab values using Indian-standard reference ranges</div>
+        </div>
+        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
+          <div style="font-size:24px;margin-bottom:8px;">⚡</div>
+          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">3. Analyze</div>
+          <div style="font-size:11px;color:var(--text-muted)">Risk engine scores metabolic, cardiovascular, thyroid & nutritional health</div>
+        </div>
+        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
+          <div style="font-size:24px;margin-bottom:8px;">🎯</div>
+          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">4. Act</div>
+          <div style="font-size:11px;color:var(--text-muted)">Receive 3 specific, actionable interventions with expected timelines</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION: UPLOAD -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="section-upload" class="section">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📤</span> Upload Lab Report</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px;">
+        Upload a blood test report and AI will automatically extract all relevant values.
+        Supports: complete blood count, lipid profile, diabetes panel, thyroid, vitamins.
+      </p>
+
+      <div id="dropzone" role="button" tabindex="0" aria-label="Drop lab report here or click to upload">
+        <div class="upload-placeholder">
+          <div class="upload-icon-wrap">🧪</div>
+          <h3>Drop your lab report here</h3>
+          <p>or click to browse files</p>
+          <div class="upload-formats">Supports: JPG · PNG · PDF · Max 10MB</div>
+        </div>
+      </div>
+
+      <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.pdf" style="display:none">
+
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btn-extract" disabled>
+          🤖 Extract Lab Values with AI
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="switchToSection('section-input')">
+          ✍️ Enter Values Manually
+        </button>
+      </div>
+
+      <div style="margin-top:16px;padding:12px;background:var(--surface2);border-radius:var(--radius);font-size:11px;color:var(--text-dim);">
+        <strong style="color:var(--text-muted)">Privacy:</strong> Your file is converted to base64 in-browser and sent only to the Gemini API if you have a key set.
+        No data is stored on any server. The API key is kept in memory only and never saved to localStorage.
+      </div>
+
+      <div id="extraction-status" style="display:none;margin-top:16px;padding:12px;background:rgba(68,136,255,0.06);border:1px solid rgba(68,136,255,0.2);border-radius:var(--radius);font-size:11px;">
+        <div style="font-weight:700;color:var(--text);margin-bottom:8px;">AI Extraction Review Required</div>
+        <div id="extraction-confidence" style="color:var(--text-muted);margin-bottom:8px;">Confidence: --</div>
+        <label style="display:flex;align-items:flex-start;gap:8px;color:var(--text-muted);cursor:pointer;">
+          <input type="checkbox" id="extraction-verified" style="margin-top:2px;">
+          <span>I reviewed all extracted values and corrected any mistakes before analysis.</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="card" style="background:rgba(255,68,68,0.03);border-color:var(--border-accent)">
+      <div class="card-title"><span class="icon">🇮🇳</span> Indian Thresholds Used</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;font-size:11px;">
+        <div>
+          <div style="color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-size:10px;">Fasting Glucose</div>
+          <div>Pre-diabetes: <span style="color:var(--yellow)">≥96 mg/dL</span></div>
+          <div style="color:var(--text-dim)">vs Western: ≥100 mg/dL</div>
+        </div>
+        <div>
+          <div style="color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-size:10px;">Total Cholesterol</div>
+          <div>Indian Normal Max: <span style="color:var(--yellow)">180 mg/dL</span></div>
+          <div style="color:var(--text-dim)">vs Western: 200 mg/dL</div>
+        </div>
+        <div>
+          <div style="color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-size:10px;">BMI (Overweight)</div>
+          <div>Indian cutoff: <span style="color:var(--yellow)">≥23 kg/m²</span></div>
+          <div style="color:var(--text-dim)">vs Western: ≥25 kg/m²</div>
+        </div>
+        <div>
+          <div style="color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-size:10px;">TSH</div>
+          <div>Subclinical: <span style="color:var(--yellow)">≥4.1 mIU/L</span></div>
+          <div style="color:var(--text-dim)">Highly prevalent in India</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION: DATA INPUT -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="section-input" class="section">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">👤</span> Patient Profile</div>
+      <div class="form-grid">
+        <div class="form-group" style="grid-column: span 2">
+          <label for="p-name">Full Name</label>
+          <input type="text" id="p-name" placeholder="e.g. Arjun Sharma">
+        </div>
+        <div class="form-group">
+          <label for="p-age">Age (years)</label>
+          <input type="number" id="p-age" placeholder="42" min="1" max="120">
+        </div>
+        <div class="form-group">
+          <label for="p-gender">Gender</label>
+          <select id="p-gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="p-height">Height (cm)</label>
+          <input type="number" id="p-height" placeholder="172" min="50" max="250" oninput="updateBMIDisplay()">
+        </div>
+        <div class="form-group">
+          <label for="p-weight">Weight (kg)</label>
+          <input type="number" id="p-weight" placeholder="84" min="10" max="300" oninput="updateBMIDisplay()">
+        </div>
+      </div>
+      <div id="bmi-display" class="bmi-display"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🌙</span> Lifestyle Factors</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="p-sleep">Sleep (hours/night)</label>
+          <input type="number" id="p-sleep" placeholder="6" min="1" max="14" step="0.5">
+          <span class="form-hint">Target: 7–9 hours</span>
+        </div>
+        <div class="form-group">
+          <label for="p-stress">Stress Level (1–10)</label>
+          <input type="number" id="p-stress" placeholder="6" min="1" max="10">
+          <span class="form-hint">1 = very low, 10 = severe</span>
+        </div>
+        <div class="form-group">
+          <label for="p-activity">Physical Activity (1–10)</label>
+          <input type="number" id="p-activity" placeholder="4" min="1" max="10">
+          <span class="form-hint">1 = sedentary, 10 = athlete</span>
+        </div>
+        <div class="form-group">
+          <label for="p-diet">Diet Type</label>
+          <select id="p-diet">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="non-vegetarian" selected>Non-Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="eggetarian">Eggetarian</option>
+            <option value="mixed">Mixed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="lab-form-section">
+      <div class="card-title">
+        <span class="icon">🧪</span> Lab Values
+        <button class="btn btn-ghost btn-sm" id="btn-clear-labs" style="margin-left:auto">Clear All</button>
+      </div>
+
+      <div class="section-title">🩸 Metabolic Panel</div>
+      <div class="lab-grid">
+        <div class="lab-field">
+          <label>Fasting Glucose <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-glucose" placeholder="70–95" step="0.1">
+        </div>
+        <div class="lab-field">
+          <label>HbA1c <span class="lab-ref">%</span></label>
+          <input type="number" id="lab-hba1c" placeholder="4.0–5.6" step="0.1">
+        </div>
+        <div class="lab-field">
+          <label>Uric Acid <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-uric" placeholder="3.5–7.0" step="0.1">
+        </div>
+        <div class="lab-field">
+          <label>Creatinine <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-creatinine" placeholder="0.6–1.2" step="0.01">
+        </div>
+      </div>
+
+      <div class="section-title">❤️ Lipid Profile</div>
+      <div class="lab-grid">
+        <div class="lab-field">
+          <label>Total Cholesterol <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-chol-total" placeholder="&lt;180 (India)" step="1">
+        </div>
+        <div class="lab-field">
+          <label>LDL Cholesterol <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-ldl" placeholder="&lt;100 optimal" step="1">
+        </div>
+        <div class="lab-field">
+          <label>HDL Cholesterol <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-hdl" placeholder="&gt;40 min" step="1">
+        </div>
+        <div class="lab-field">
+          <label>Triglycerides <span class="lab-ref">mg/dL</span></label>
+          <input type="number" id="lab-trig" placeholder="&lt;150" step="1">
+        </div>
+      </div>
+
+      <div class="section-title">🦋 Thyroid</div>
+      <div class="lab-grid">
+        <div class="lab-field">
+          <label>TSH <span class="lab-ref">mIU/L</span></label>
+          <input type="number" id="lab-tsh" placeholder="0.4–4.0" step="0.01">
+        </div>
+      </div>
+
+      <div class="section-title">🌿 Vitamins & Nutrition</div>
+      <div class="lab-grid">
+        <div class="lab-field">
+          <label>Vitamin D (25-OH) <span class="lab-ref">ng/mL</span></label>
+          <input type="number" id="lab-vitd" placeholder="&gt;30 sufficient" step="0.1">
+        </div>
+        <div class="lab-field">
+          <label>Vitamin B12 <span class="lab-ref">pg/mL</span></label>
+          <input type="number" id="lab-vitb12" placeholder="&gt;300 normal" step="1">
+        </div>
+        <div class="lab-field">
+          <label>Hemoglobin <span class="lab-ref">g/dL</span></label>
+          <input type="number" id="lab-hb" placeholder="M:13+, F:12+" step="0.1">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary btn-lg" id="btn-analyze">
+          ⚡ Analyze Risk Profile
+        </button>
+        <button class="btn btn-demo" id="btn-demo-form">
+          ▶ Fill Demo Data
+        </button>
+        <button class="btn btn-secondary" onclick="switchToSection('section-upload')">
+          📤 Upload Report Instead
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION: RESULTS -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="section-results" class="section">
+
+    <!-- Patient summary header -->
+    <div class="card" style="background:linear-gradient(135deg,var(--surface),rgba(255,68,68,0.06))">
+      <div class="results-header">
+        <div class="patient-info">
+          <div class="patient-name" id="result-name">—</div>
+          <div class="patient-meta" id="result-meta">—</div>
+          <div class="risk-level-badge" id="result-risk-level">—</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start">
+          <button class="btn btn-success" id="btn-save-family" disabled>
+            💾 Save to Family
+          </button>
+          <button class="btn btn-secondary btn-sm" id="btn-export-report" disabled>
+            🖨 Export Report
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="switchToSection('section-input')">
+            ← Edit Data
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main results grid -->
+    <div class="results-grid">
+
+      <!-- Left: Gauge + Categories -->
+      <div>
+        <div class="gauge-wrapper">
+          <canvas id="gauge-canvas" width="320" height="200"></canvas>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">📊</span> Risk by Category</div>
+          <div id="category-bars" class="category-bars"></div>
+        </div>
+      </div>
+
+      <!-- Right: Narrative -->
+      <div>
+        <div class="card">
+          <div class="card-title"><span class="icon">🧠</span> AI Health Analysis</div>
+          <div class="narrative-summary" id="result-summary">
+            Run an analysis to see your personalized health narrative.
+          </div>
+          <div class="narrative-insight" id="result-insight"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">📈</span> Disease Risk Trajectory</div>
+          <div class="chart-container">
+            <canvas id="timeline-chart"></canvas>
+          </div>
+          <div style="font-size:10px;color:var(--text-dim);margin-top:8px;text-align:center;">
+            Projected disease risk if current lifestyle continues unchanged
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Missed Signals -->
+    <div class="card" style="border-color:var(--border-accent)">
+      <div class="card-title">
+        <span class="icon">🚨</span> Missed Early Signals
+        <span style="font-size:11px;color:var(--text-dim);font-weight:400;margin-left:auto">Values your standard report may have marked as "normal"</span>
+      </div>
+      <div id="missed-signals"></div>
+    </div>
+
+    <!-- Interventions -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🎯</span> Your 3 Priority Interventions</div>
+      <div id="interventions-list"></div>
+    </div>
+
+    <!-- Findings Table -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🔬</span> Detailed Lab Findings</div>
+      <div style="overflow-x:auto">
+        <table class="findings-table">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Value & Status</th>
+              <th>Severity</th>
+            </tr>
+          </thead>
+          <tbody id="findings-tbody">
+            <tr><td colspan="3" style="text-align:center;color:var(--text-dim);padding:24px">Run analysis to see findings</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Safety reminder at bottom of results -->
+    <div class="safety-banner" style="margin-top:8px">
+      <span class="safety-icon">🏥</span>
+      <span>
+        These results are for <strong>awareness only</strong>. Please share this report with a qualified physician before making
+        any health decisions. Do not start, stop, or modify any medication or supplement without medical supervision.
+      </span>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION: FAMILY -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section id="section-family" class="section">
+
+    <div class="card">
+      <div class="card-title">
+        <span class="icon">👨‍👩‍👧‍👦</span>
+        Family Health Dashboard
+        <span style="margin-left:auto;font-size:12px;color:var(--text-muted)">
+          <span id="family-count-display">0</span> members tracked
+        </span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px;">
+        Track health risk scores for all family members in one place.
+        Run an analysis for each person and save their profile here.
+        Data stored locally in your browser.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;margin-bottom:16px;">
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--text-muted);max-width:520px;cursor:pointer;">
+          <input type="checkbox" id="family-storage-consent" style="margin-top:2px;">
+          <span>I understand family profiles are stored in this browser localStorage and can be deleted anytime.</span>
+        </label>
+        <button class="btn btn-secondary btn-sm" id="btn-clear-local-data">🧹 Clear All Local Data</button>
+      </div>
+      <div id="family-grid" class="family-grid"></div>
+    </div>
+
+    <div class="card" style="background:rgba(68,136,255,0.04);border-color:rgba(68,136,255,0.15)">
+      <div class="card-title"><span class="icon">💡</span> Screening Recommendations for Indians</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;font-size:11px;color:var(--text-muted);">
+        <div>
+          <div style="color:var(--text);font-weight:700;margin-bottom:4px;">Adults 30–40</div>
+          Fasting glucose, HbA1c, lipid profile, Vitamin D, B12, TSH — annually
+        </div>
+        <div>
+          <div style="color:var(--text);font-weight:700;margin-bottom:4px;">Adults 40+</div>
+          All of above + cardiac risk markers, kidney function — every 6 months
+        </div>
+        <div>
+          <div style="color:var(--text);font-weight:700;margin-bottom:4px;">Women (all ages)</div>
+          Add hemoglobin, ferritin, thyroid panel — Iron deficiency affects 53% of Indian women
+        </div>
+        <div>
+          <div style="color:var(--text);font-weight:700;margin-bottom:4px;">Family History Risk</div>
+          Diabetes/heart disease family history — begin annual screening from age 25
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div><!-- /app-wrapper -->
+
+<script>
+  // ─── Simple navigation helpers (before modules load) ───────────────────────
+  function switchNav(btn) {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.nav;
+    document.querySelectorAll('.section').forEach(s => {
+      s.style.display = 'none';
+      s.classList.remove('active');
+    });
+    const sec = document.getElementById(target);
+    if (sec) {
+      sec.style.display = 'block';
+      sec.classList.add('active');
+    }
+  }
+
+  function switchToSection(id) {
+    const navBtn = document.querySelector(`[data-nav="${id}"]`);
+    if (navBtn) switchNav(navBtn);
+    else {
+      document.querySelectorAll('.section').forEach(s => {
+        s.style.display = 'none';
+        s.classList.remove('active');
+      });
+      const sec = document.getElementById(id);
+      if (sec) {
+        sec.style.display = 'block';
+        sec.classList.add('active');
+      }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Wire up additional demo buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btn-demo-hero')?.addEventListener('click', () => {
+      if (window._appRunDemo) window._appRunDemo();
+    });
+    document.getElementById('btn-demo-form')?.addEventListener('click', () => {
+      if (window._appRunDemo) window._appRunDemo();
+    });
+  });
+</script>
+
+<!-- Load app as ES module -->
+<script type="module">
+  import GeminiAPI from './gemini.js';
+  import RiskEngine from './riskEngine.js';
+  import Interventions from './interventions.js';
+  import FamilyManager from './familyManager.js';
+  import UI from './ui.js';
+
+  // ─── App State ──────────────────────────────────────────────────────────────
+  const AppState = {
+    currentProfile: null,
+    currentLabValues: null,
+    currentRiskResult: null,
+    currentNarrative: null,
+    uploadedFile: null,
+    uploadedBase64: null,
+    uploadedMime: null,
+    extractionMeta: null,
+    isDemoMode: false
+  };
+
+  // ─── Init ───────────────────────────────────────────────────────────────────
+  function init() {
+    initEventListeners();
+    renderFamilyGrid();
+    updateFamilyCount();
+    UI.showNotification('Welcome to FamilyGuard AI — click ▶ Run Demo to see a full analysis', 'info');
+    window._appRunDemo = runDemo;
+  }
+
+  function initEventListeners() {
+    document.getElementById('btn-save-key')?.addEventListener('click', saveApiKey);
+    document.getElementById('api-key-input')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') saveApiKey();
+    });
+
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
+    dropzone?.addEventListener('click', () => fileInput?.click());
+    dropzone?.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput?.click();
+      }
+    });
+    dropzone?.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone?.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone?.addEventListener('drop', e => {
+      e.preventDefault(); dropzone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) handleFileSelected(file);
+    });
+    fileInput?.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file) handleFileSelected(file);
+    });
+
+    document.getElementById('btn-extract')?.addEventListener('click', extractLabValues);
+    document.getElementById('btn-analyze')?.addEventListener('click', analyzeRisk);
+    document.getElementById('btn-demo')?.addEventListener('click', runDemo);
+    document.getElementById('btn-save-family')?.addEventListener('click', saveToFamily);
+    document.getElementById('btn-export-report')?.addEventListener('click', exportReport);
+    document.getElementById('btn-clear-local-data')?.addEventListener('click', clearLocalData);
+    document.getElementById('extraction-verified')?.addEventListener('change', e => {
+      if (AppState.extractionMeta) AppState.extractionMeta.verified = !!e.target.checked;
+    });
+
+    document.getElementById('p-height')?.addEventListener('input', updateBMIDisplay);
+    document.getElementById('p-weight')?.addEventListener('input', updateBMIDisplay);
+  }
+
+  // ─── API Key ────────────────────────────────────────────────────────────────
+  function saveApiKey() {
+    const key = document.getElementById('api-key-input')?.value?.trim();
+    if (!key) { UI.showNotification('Enter a valid Gemini API key', 'error'); return; }
+    GeminiAPI.setApiKey(key);
+    document.getElementById('api-status').innerHTML = `<span class="status-ok">✓ API Key Active — AI Mode Enabled</span>`;
+    document.getElementById('api-key-input').value = '';
+    UI.showNotification('API key saved — upload a lab report to extract values', 'success');
+  }
+
+  // ─── File Handling ──────────────────────────────────────────────────────────
+  function handleFileSelected(file) {
+    const allowed = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+    if (!allowed.includes(file.type)) { UI.showNotification('Please upload JPG, PNG, or PDF', 'error'); return; }
+    if (file.size > 10 * 1024 * 1024) { UI.showNotification('File too large — max 10MB', 'error'); return; }
+
+    AppState.uploadedFile = file;
+    AppState.uploadedMime = file.type;
+    AppState.extractionMeta = null;
+    showExtractionStatus(null);
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      AppState.uploadedBase64 = e.target.result.split(',')[1];
+      const dz = document.getElementById('dropzone');
+      dz.innerHTML = `
+        <div class="upload-success">
+          <div class="upload-icon">✓</div>
+          <div class="upload-filename">${escHtml(file.name)}</div>
+          <div class="upload-size">${(file.size/1024).toFixed(1)} KB · ${file.type.split('/')[1].toUpperCase()}</div>
+        </div>`;
+      const extractBtn = document.getElementById('btn-extract');
+      extractBtn.disabled = false;
+      extractBtn.textContent = GeminiAPI.hasApiKey() ? '🤖 Extract Lab Values with AI' : '⚠ Set API Key to Extract';
+    };
+    reader.onerror = () => UI.showNotification('File read failed', 'error');
+    reader.readAsDataURL(file);
+  }
+
+  async function extractLabValues() {
+    if (!AppState.uploadedBase64) { UI.showNotification('Upload a file first', 'error'); return; }
+    if (!GeminiAPI.hasApiKey()) { UI.showNotification('Set your Gemini API key to use AI extraction', 'warning'); return; }
+
+    UI.showLoader('AI is reading your lab report...');
+    try {
+      const vals = await GeminiAPI.extractLabValues(AppState.uploadedBase64, AppState.uploadedMime);
+      AppState.currentLabValues = vals;
+      populateLabForm(vals);
+      AppState.extractionMeta = {
+        source: 'ai',
+        confidence: estimateExtractionConfidence(vals),
+        verified: false
+      };
+      showExtractionStatus(AppState.extractionMeta);
+      UI.hideLoader();
+      UI.showNotification('Lab values extracted! Review them in the "Enter Data" tab.', 'success');
+      switchToSection('section-input');
+    } catch (err) {
+      UI.hideLoader();
+      UI.showNotification('Extraction failed: ' + err.message, 'error');
+    }
+  }
+
+  function populateLabForm(v) {
+    const m = {
+      glucose_fasting:'lab-glucose', hba1c:'lab-hba1c',
+      cholesterol_total:'lab-chol-total', cholesterol_ldl:'lab-ldl',
+      cholesterol_hdl:'lab-hdl', triglycerides:'lab-trig',
+      vitaminD:'lab-vitd', vitaminB12:'lab-vitb12',
+      tsh:'lab-tsh', hemoglobin:'lab-hb',
+      creatinine:'lab-creatinine', uric_acid:'lab-uric'
+    };
+    for (const [k, id] of Object.entries(m)) {
+      const el = document.getElementById(id);
+      if (el && v[k] !== null && v[k] !== undefined) {
+        el.value = v[k];
+        el.classList.add('extracted');
+        setTimeout(() => el.classList.remove('extracted'), 2500);
+      }
+    }
+  }
+
+  function getLabsFromForm() {
+    const n = id => { const v = parseFloat(document.getElementById(id)?.value); return isNaN(v) ? null : v; };
+    return {
+      glucose_fasting: n('lab-glucose'), hba1c: n('lab-hba1c'),
+      cholesterol_total: n('lab-chol-total'), cholesterol_ldl: n('lab-ldl'),
+      cholesterol_hdl: n('lab-hdl'), triglycerides: n('lab-trig'),
+      vitaminD: n('lab-vitd'), vitaminB12: n('lab-vitb12'),
+      tsh: n('lab-tsh'), hemoglobin: n('lab-hb'),
+      creatinine: n('lab-creatinine'), uric_acid: n('lab-uric')
+    };
+  }
+
+  function estimateExtractionConfidence(labs) {
+    const total = Object.keys(labs).length;
+    const extracted = Object.values(labs).filter(v => v !== null && v !== undefined).length;
+    const pct = Math.round((extracted / total) * 100);
+    const bucket = pct >= 80 ? 'High' : pct >= 50 ? 'Medium' : 'Low';
+    return { percent: pct, bucket };
+  }
+
+  function showExtractionStatus(meta) {
+    const box = document.getElementById('extraction-status');
+    const confidenceEl = document.getElementById('extraction-confidence');
+    const verifyEl = document.getElementById('extraction-verified');
+    if (!box || !confidenceEl || !verifyEl) return;
+
+    if (!meta) {
+      box.style.display = 'none';
+      verifyEl.checked = false;
+      return;
+    }
+
+    box.style.display = 'block';
+    confidenceEl.textContent = `Confidence: ${meta.bucket} (${meta.percent}% fields extracted)`;
+    verifyEl.checked = !!meta.verified;
+  }
+
+  function validateLabRanges(labs) {
+    const checks = [
+      { key: 'glucose_fasting', id: 'lab-glucose', label: 'Fasting Glucose', unit: 'mg/dL', min: 40, max: 500 },
+      { key: 'hba1c', id: 'lab-hba1c', label: 'HbA1c', unit: '%', min: 3, max: 15 },
+      { key: 'cholesterol_total', id: 'lab-chol-total', label: 'Total Cholesterol', unit: 'mg/dL', min: 80, max: 450 },
+      { key: 'cholesterol_ldl', id: 'lab-ldl', label: 'LDL Cholesterol', unit: 'mg/dL', min: 20, max: 350 },
+      { key: 'cholesterol_hdl', id: 'lab-hdl', label: 'HDL Cholesterol', unit: 'mg/dL', min: 10, max: 120 },
+      { key: 'triglycerides', id: 'lab-trig', label: 'Triglycerides', unit: 'mg/dL', min: 30, max: 1000 },
+      { key: 'vitaminD', id: 'lab-vitd', label: 'Vitamin D', unit: 'ng/mL', min: 3, max: 150 },
+      { key: 'vitaminB12', id: 'lab-vitb12', label: 'Vitamin B12', unit: 'pg/mL', min: 50, max: 2000 },
+      { key: 'tsh', id: 'lab-tsh', label: 'TSH', unit: 'mIU/L', min: 0.01, max: 100 },
+      { key: 'hemoglobin', id: 'lab-hb', label: 'Hemoglobin', unit: 'g/dL', min: 5, max: 22 },
+      { key: 'creatinine', id: 'lab-creatinine', label: 'Creatinine', unit: 'mg/dL', min: 0.2, max: 15 },
+      { key: 'uric_acid', id: 'lab-uric', label: 'Uric Acid', unit: 'mg/dL', min: 1, max: 20 }
+    ];
+
+    for (const check of checks) {
+      const value = labs[check.key];
+      if (value === null || value === undefined) continue;
+      if (value < check.min || value > check.max) {
+        return {
+          ok: false,
+          fieldId: check.id,
+          message: `${check.label} looks out of plausible range (${check.min}-${check.max} ${check.unit}). Please verify unit/value.`
+        };
+      }
+    }
+
+    return { ok: true };
+  }
+
+  function getProfileFromForm() {
+    const g = id => document.getElementById(id)?.value || null;
+    const n = id => { const v = parseFloat(document.getElementById(id)?.value); return isNaN(v) ? null : v; };
+    return {
+      name: g('p-name') || 'Patient',
+      age: n('p-age') || 35,
+      gender: g('p-gender') || 'male',
+      height: n('p-height'), weight: n('p-weight'),
+      sleep: n('p-sleep') || 7, stress: n('p-stress') || 5,
+      activity: n('p-activity') || 5, diet: g('p-diet') || 'mixed'
+    };
+  }
+
+  function updateBMIDisplay() {
+    const h = parseFloat(document.getElementById('p-height')?.value);
+    const w = parseFloat(document.getElementById('p-weight')?.value);
+    const el = document.getElementById('bmi-display');
+    if (!el) return;
+    if (h && w && h > 0) {
+      const bmi = w / ((h/100)**2);
+      const cat = bmi < 18.5 ? 'Underweight' : bmi < 23 ? 'Normal' : bmi < 27.5 ? 'Overweight' : 'Obese';
+      el.textContent = `BMI: ${bmi.toFixed(1)} (${cat} — Indian standard)`;
+      el.style.color = bmi >= 27.5 ? '#ff4444' : bmi >= 23 ? '#ffb347' : '#00d084';
+    } else { el.textContent = ''; }
+  }
+
+  // ─── Analysis ───────────────────────────────────────────────────────────────
+  async function analyzeRisk() {
+    const profile = getProfileFromForm();
+    if (!document.getElementById('p-name')?.value?.trim()) {
+      UI.showNotification('Please enter a patient name', 'error');
+      document.getElementById('p-name')?.focus(); return;
+    }
+    const labs = getLabsFromForm();
+    if (!Object.values(labs).some(v => v !== null)) {
+      UI.showNotification('Please enter at least some lab values', 'warning'); return;
+    }
+
+    const validation = validateLabRanges(labs);
+    if (!validation.ok) {
+      UI.showNotification(validation.message, 'error');
+      document.getElementById(validation.fieldId)?.focus();
+      return;
+    }
+
+    if (AppState.extractionMeta?.source === 'ai' && !AppState.extractionMeta.verified) {
+      UI.showNotification('Please verify extracted values before analysis.', 'warning');
+      switchToSection('section-upload');
+      document.getElementById('extraction-verified')?.focus();
+      return;
+    }
+
+    AppState.currentProfile = profile;
+    AppState.currentLabValues = labs;
+    await runAnalysis(profile, labs, null);
+  }
+
+  async function runAnalysis(profile, labs, preloadedNarrative) {
+    UI.showLoader('Running risk engine...');
+    try {
+      const risk = await RiskEngine.calculateRisk(profile, labs);
+      AppState.currentRiskResult = risk;
+
+      let narrative = preloadedNarrative;
+      if (!narrative && GeminiAPI.hasApiKey()) {
+        UI.showLoader('Generating AI narrative...');
+        try { narrative = await GeminiAPI.generateNarrative(profile, labs, risk); }
+        catch (e) { console.warn('Narrative failed, using computed:', e.message); }
+      }
+
+      AppState.currentNarrative = narrative;
+      const interventions = narrative?.interventions || Interventions.selectInterventions(risk, profile);
+
+      UI.hideLoader();
+      renderResults(profile, labs, risk, narrative, interventions);
+      switchToSection('section-results');
+    } catch (err) {
+      UI.hideLoader();
+      console.error(err);
+      UI.showNotification('Analysis error: ' + err.message, 'error');
+    }
+  }
+
+  // ─── Results ────────────────────────────────────────────────────────────────
+  function renderResults(profile, labs, risk, narrative, interventions) {
+    const { overallScore, riskLevel, categoryScores, findings, borderlineValues } = risk;
+    const riskColor = UI.getRiskColor(riskLevel);
+    const bmi = risk.bmi;
+
+    document.getElementById('result-name').textContent = profile.name;
+    document.getElementById('result-meta').textContent =
+      `${profile.age}y · ${profile.gender} · ${profile.diet || 'Mixed diet'}${bmi ? ` · BMI ${bmi.toFixed(1)}` : ''}`;
+    document.getElementById('result-risk-level').textContent = riskLevel;
+    document.getElementById('result-risk-level').style.color = riskColor;
+
+    // Animate gauge
+    let cur = 0;
+    const step = overallScore / 60;
+    const interval = setInterval(() => {
+      cur = Math.min(cur + step, overallScore);
+      UI.drawGauge('gauge-canvas', Math.round(cur), riskLevel);
+      if (cur >= overallScore) clearInterval(interval);
+    }, 16);
+
+    UI.renderCategoryBars('category-bars', categoryScores);
+
+    // Narrative
+    const summaryEl = document.getElementById('result-summary');
+    if (summaryEl) summaryEl.textContent = narrative?.summary || autoSummary(profile, risk);
+    const insightEl = document.getElementById('result-insight');
+    if (insightEl) insightEl.textContent = narrative?.critical_insight || autoInsight(risk);
+
+    renderSignals(narrative?.missed_signals || autoSignals(risk));
+    renderInterventions(interventions);
+    renderFindings(findings);
+
+    const tlData = narrative?.timeline_risk || autoTimeline(risk);
+    tlData.current = overallScore;
+    setTimeout(() => UI.drawTimelineChart('timeline-chart', tlData), 500);
+
+    document.getElementById('btn-save-family').disabled = false;
+    document.getElementById('btn-export-report').disabled = false;
+    document.getElementById('family-count-display').textContent = FamilyManager.loadProfiles().length;
+  }
+
+  function renderSignals(signals) {
+    const c = document.getElementById('missed-signals');
+    if (!c) return;
+    if (!signals?.length) {
+      c.innerHTML = '<p class="no-signals">✓ No critical borderline patterns detected. Keep monitoring every 6 months.</p>';
+      return;
+    }
+    c.innerHTML = signals.slice(0,3).map((s,i) => `
+      <div class="signal-card" style="animation-delay:${i*0.1}s">
+        <div class="signal-header">
+          <span class="signal-dot"></span>
+          <span class="signal-name">${escHtml(s.signal)}</span>
+          <span class="signal-value">${escHtml(s.value)}</span>
+        </div>
+        <p class="signal-implication">${escHtml(s.implication)}</p>
+      </div>`).join('');
+  }
+
+  function renderInterventions(list) {
+    const c = document.getElementById('interventions-list');
+    if (!c) return;
+    const items = list?.length ? list : Interventions.getDefaultInterventions();
+    c.innerHTML = items.slice(0,3).map((item,i) => `
+      <div class="intervention-card" style="animation-delay:${i*0.12}s">
+        <div class="int-priority">
+          <span class="priority-badge">${item.priority||i+1}</span>
+          <span class="int-icon">${item.icon||'🎯'}</span>
+        </div>
+        <div class="int-body">
+          <h4 class="int-title">${escHtml(item.title)}</h4>
+          <p class="int-action">${escHtml(item.action)}</p>
+          <div class="int-meta">
+            ${item.impact ? `<span class="int-impact">📈 ${escHtml(item.impact)}</span>` : ''}
+            ${item.timeline ? `<span class="int-timeline">⏱ ${escHtml(item.timeline)}</span>` : ''}
+          </div>
+        </div>
+      </div>`).join('');
+  }
+
+  function renderFindings(findings) {
+    const tb = document.getElementById('findings-tbody');
+    if (!tb) return;
+    const labels = {
+      glucose:'Fasting Glucose', hba1c:'HbA1c', cholTotal:'Total Cholesterol',
+      ldl:'LDL', hdl:'HDL', triglycerides:'Triglycerides',
+      vitaminD:'Vitamin D', vitaminB12:'Vitamin B12', tsh:'TSH', hemoglobin:'Hemoglobin',
+      creatinine:'Creatinine', uricAcid:'Uric Acid'
+    };
+    if (!findings?.length) {
+      tb.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--green);padding:20px">✓ All values within normal range</td></tr>';
+      return;
+    }
+    tb.innerHTML = findings.map(f => {
+      const clr = f.severity==='critical'?'#ff4444':f.severity==='high'?'#ff6b35':'#ffb347';
+      return `<tr>
+        <td style="color:var(--text)">${labels[f.key]||f.key}</td>
+        <td style="color:var(--text-muted)">${escHtml(f.label)}</td>
+        <td><span style="color:${clr};font-weight:700;text-transform:uppercase;font-size:11px">${f.severity}</span></td>
+      </tr>`;
+    }).join('');
+  }
+
+  // ─── Auto-fallback content ──────────────────────────────────────────────────
+  function autoSummary(p, r) {
+    const worst = Object.entries(r.categoryScores).sort((a,b)=>b[1]-a[1])[0];
+    return `${p.name}'s health score is ${r.overallScore}/100 — ${r.riskLevel} risk. The ${worst[0]} profile shows the highest concern. Targeted intervention now can significantly reduce long-term disease progression.`;
+  }
+
+  function autoInsight(r) {
+    const cats = Object.entries(r.categoryScores).filter(([,v])=>v>40).map(([k])=>k);
+    if (!cats.length) return 'Current values are within acceptable range. Continue preventive monitoring every 6 months and maintain a healthy lifestyle.';
+    return `Multiple ${cats.join(' and ')} markers are trending toward clinical thresholds. The convergence of these factors creates a compounding risk profile that warrants immediate lifestyle intervention and physician consultation within the next 30 days.`;
+  }
+
+  function autoSignals(r) {
+    return (r.findings||[]).slice(0,3).map(f => ({
+      signal: f.key.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase()),
+      value: f.label,
+      implication: `This value falls outside Indian-standard safe range and requires attention.`
+    }));
+  }
+
+  function autoTimeline(r) {
+    const b = 100 - r.overallScore;
+    return { '1_year': Math.min(95,b+6), '3_years': Math.min(95,b+18), '5_years': Math.min(95,b+30), '10_years': Math.min(95,b+50) };
+  }
+
+  // ─── Demo Mode ──────────────────────────────────────────────────────────────
+  async function runDemo() {
+    UI.showLoader('Loading demo patient: Arjun Sharma...');
+    AppState.isDemoMode = true;
+    try {
+      const res = await fetch('./demoPatient.json');
+      if (!res.ok) throw new Error('Demo file not found');
+      const demo = await res.json();
+      AppState.currentProfile = demo.profile;
+      AppState.currentLabValues = demo.labValues;
+      AppState.extractionMeta = null;
+      showExtractionStatus(null);
+      fillForm(demo.profile, demo.labValues);
+      UI.hideLoader();
+      await runAnalysis(demo.profile, demo.labValues, demo.narrative);
+    } catch (err) {
+      console.warn('Demo file load failed, using inline data:', err);
+      UI.showLoader('Using inline demo data...');
+      const p = { name:'Arjun Sharma', age:42, gender:'male', height:172, weight:84, sleep:5.5, stress:7, activity:3, diet:'non-vegetarian' };
+      const l = { glucose_fasting:108, hba1c:5.9, cholesterol_total:196, cholesterol_ldl:128, cholesterol_hdl:38, triglycerides:178, vitaminD:14, vitaminB12:182, tsh:4.6, hemoglobin:13.2, creatinine:1.1, uric_acid:6.8 };
+      fillForm(p, l);
+      AppState.currentProfile = p;
+      AppState.currentLabValues = l;
+      UI.hideLoader();
+      await runAnalysis(p, l, null);
+    }
+  }
+
+  function fillForm(p, l) {
+    const s = (id,v) => { const e=document.getElementById(id); if(e&&v!==null&&v!==undefined) e.value=v; };
+    s('p-name',p.name); s('p-age',p.age); s('p-gender',p.gender);
+    s('p-height',p.height); s('p-weight',p.weight); s('p-sleep',p.sleep);
+    s('p-stress',p.stress); s('p-activity',p.activity); s('p-diet',p.diet);
+    s('lab-glucose',l.glucose_fasting); s('lab-hba1c',l.hba1c);
+    s('lab-chol-total',l.cholesterol_total); s('lab-ldl',l.cholesterol_ldl);
+    s('lab-hdl',l.cholesterol_hdl); s('lab-trig',l.triglycerides);
+    s('lab-vitd',l.vitaminD); s('lab-vitb12',l.vitaminB12);
+    s('lab-tsh',l.tsh); s('lab-hb',l.hemoglobin);
+    s('lab-creatinine',l.creatinine); s('lab-uric',l.uric_acid);
+    updateBMIDisplay();
+  }
+
+  // ─── Family ─────────────────────────────────────────────────────────────────
+  function saveToFamily() {
+    if (!AppState.currentProfile || !AppState.currentRiskResult) {
+      UI.showNotification('Run analysis first', 'warning'); return;
+    }
+
+    if (!document.getElementById('family-storage-consent')?.checked) {
+      UI.showNotification('Please confirm local storage consent before saving to family.', 'warning');
+      return;
+    }
+
+    const entry = FamilyManager.addProfile(AppState.currentProfile, AppState.currentRiskResult);
+    renderFamilyGrid();
+    updateFamilyCount();
+    UI.showNotification(`${entry.name} saved to family dashboard`, 'success');
+    const btn = document.getElementById('btn-save-family');
+    if (btn) { btn.textContent = '✓ Saved!'; setTimeout(() => { btn.textContent = '💾 Save to Family'; }, 2500); }
+  }
+
+  function renderFamilyGrid() {
+    const profiles = FamilyManager.loadProfiles();
+    UI.renderFamilyGrid('family-grid', profiles, id => {
+      FamilyManager.removeProfile(id);
+      renderFamilyGrid();
+      updateFamilyCount();
+      UI.showNotification('Profile removed', 'info');
+    });
+    document.getElementById('family-count-display').textContent = profiles.length;
+  }
+
+  function updateFamilyCount() {
+    const n = FamilyManager.loadProfiles().length;
+    const badges = document.querySelectorAll('#family-count');
+    badges.forEach(b => b.textContent = n);
+    document.getElementById('family-count-display').textContent = n;
+  }
+
+  function clearLocalData() {
+    const ok = window.confirm('Clear all locally stored family profiles from this browser?');
+    if (!ok) return;
+    FamilyManager.clearAllProfiles();
+    renderFamilyGrid();
+    updateFamilyCount();
+    UI.showNotification('All local family data cleared.', 'info');
+  }
+
+  function exportReport() {
+    if (!AppState.currentRiskResult) {
+      UI.showNotification('Run an analysis before exporting a report.', 'warning');
+      return;
+    }
+    window.print();
+  }
+
+  // ─── Lab clear ──────────────────────────────────────────────────────────────
+  document.getElementById('btn-clear-labs')?.addEventListener('click', () => {
+    ['lab-glucose','lab-hba1c','lab-chol-total','lab-ldl','lab-hdl','lab-trig','lab-vitd','lab-vitb12','lab-tsh','lab-hb','lab-creatinine','lab-uric']
+      .forEach(id => { const e=document.getElementById(id); if(e) e.value=''; });
+    UI.showNotification('Lab values cleared', 'info');
+  });
+
+  function escHtml(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  window.updateBMIDisplay = updateBMIDisplay;
+  init();
+</script>
+
+</body>
+</html>

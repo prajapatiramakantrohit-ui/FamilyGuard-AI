@@ -1,0 +1,93 @@
+{
+  "glucose_fasting": {
+    "normal_max": 95,
+    "prediabetes_start": 96,
+    "prediabetes_end": 125,
+    "diabetes_start": 126,
+    "unit": "mg/dL",
+    "label": "Fasting Glucose"
+  },
+  "hba1c": {
+    "normal_max": 5.6,
+    "prediabetes_start": 5.7,
+    "prediabetes_end": 6.4,
+    "diabetes_start": 6.5,
+    "unit": "%",
+    "label": "HbA1c"
+  },
+  "cholesterol_total": {
+    "indian_normal_max": 180,
+    "borderline_start": 181,
+    "high_start": 200,
+    "unit": "mg/dL",
+    "label": "Total Cholesterol"
+  },
+  "cholesterol_ldl": {
+    "optimal_max": 100,
+    "near_optimal_max": 129,
+    "borderline_start": 130,
+    "high_start": 160,
+    "unit": "mg/dL",
+    "label": "LDL Cholesterol"
+  },
+  "cholesterol_hdl": {
+    "low_max": 40,
+    "normal_min": 41,
+    "good_min": 60,
+    "unit": "mg/dL",
+    "label": "HDL Cholesterol"
+  },
+  "triglycerides": {
+    "normal_max": 149,
+    "high_start": 150,
+    "very_high_start": 200,
+    "unit": "mg/dL",
+    "label": "Triglycerides"
+  },
+  "vitaminD": {
+    "deficient_max": 20,
+    "insufficient_max": 29,
+    "sufficient_min": 30,
+    "unit": "ng/mL",
+    "label": "Vitamin D (25-OH)"
+  },
+  "vitaminB12": {
+    "deficient_max": 200,
+    "low_max": 300,
+    "normal_min": 301,
+    "unit": "pg/mL",
+    "label": "Vitamin B12"
+  },
+  "tsh": {
+    "normal_min": 0.4,
+    "normal_max": 4.0,
+    "subclinical_hypo_start": 4.1,
+    "overt_hypo_start": 10.0,
+    "unit": "mIU/L",
+    "label": "TSH"
+  },
+  "hemoglobin": {
+    "anemia_male_max": 12.9,
+    "anemia_female_max": 11.9,
+    "normal_male_min": 13.0,
+    "normal_female_min": 12.0,
+    "unit": "g/dL",
+    "label": "Hemoglobin"
+  },
+  "creatinine": {
+    "normal_male_max": 1.2,
+    "normal_female_max": 1.1,
+    "high_start_male": 1.3,
+    "high_start_female": 1.2,
+    "unit": "mg/dL",
+    "label": "Creatinine"
+  },
+  "uric_acid": {
+    "normal_male_max": 7.0,
+    "normal_female_max": 6.0,
+    "high_start_male": 7.1,
+    "high_start_female": 6.1,
+    "unit": "mg/dL",
+    "label": "Uric Acid"
+  }
+}

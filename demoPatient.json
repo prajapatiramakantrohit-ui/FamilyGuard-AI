@@ -1,0 +1,77 @@
+{
+  "profile": {
+    "name": "Arjun Sharma",
+    "age": 42,
+    "gender": "male",
+    "height": 172,
+    "weight": 84,
+    "sleep": 5.5,
+    "stress": 7,
+    "activity": 3,
+    "diet": "non-vegetarian"
+  },
+  "labValues": {
+    "glucose_fasting": 108,
+    "hba1c": 5.9,
+    "cholesterol_total": 196,
+    "cholesterol_ldl": 128,
+    "cholesterol_hdl": 38,
+    "triglycerides": 178,
+    "vitaminD": 14,
+    "vitaminB12": 182,
+    "tsh": 4.6,
+    "hemoglobin": 13.2,
+    "creatinine": 1.1,
+    "uric_acid": 6.8
+  },
+  "narrative": {
+    "summary": "Arjun presents a classic pre-disease pattern seen in urban Indian males in their 40s — multiple borderline values converging simultaneously, each individually 'not alarming' but collectively pointing toward a metabolic storm brewing beneath the surface.",
+    "critical_insight": "The combination of borderline fasting glucose (108 mg/dL), elevated HbA1c (5.9%), low HDL (38 mg/dL), and high triglycerides creates a 'metabolic quartet' that, left unaddressed for 3–5 years, carries a 68% probability of progressing to Type 2 Diabetes and a 45% probability of a cardiovascular event.",
+    "missed_signals": [
+      {
+        "signal": "Subclinical Hypothyroidism",
+        "value": "TSH 4.6 mIU/L",
+        "implication": "Marginally elevated TSH is quietly worsening insulin resistance and cholesterol metabolism — a hidden amplifier of your metabolic risk."
+      },
+      {
+        "signal": "Severe Vitamin D Deficiency",
+        "value": "14 ng/mL (Critical)",
+        "implication": "Vitamin D receptors exist on pancreatic beta cells. At this level, insulin secretion efficiency drops by ~20%, directly accelerating glucose dysregulation."
+      },
+      {
+        "signal": "Vitamin B12 Deficiency",
+        "value": "182 pg/mL (Deficient)",
+        "implication": "Neurological warning — B12 at this level causes subclinical neuropathy that may mask early diabetic nerve damage warning signs."
+      }
+    ],
+    "timeline_risk": {
+      "1_year": 22,
+      "3_years": 48,
+      "5_years": 71,
+      "10_years": 89
+    },
+    "interventions": [
+      {
+        "priority": 1,
+        "title": "Metabolic Reset Protocol",
+        "action": "Eliminate refined carbohydrates (white rice, maida, sugar) for 90 days. Replace with millets (jowar, bajra). Target: FBS below 95 mg/dL.",
+        "impact": "Reduces T2D progression risk by 40–58% within 6 months",
+        "timeline": "Results visible in 6–8 weeks"
+      },
+      {
+        "priority": 2,
+        "title": "Vitamin D Emergency Correction",
+        "action": "Consult doctor for Vitamin D3 60,000 IU weekly supplementation for 8 weeks, then 2,000 IU daily maintenance. 20 min morning sun exposure daily.",
+        "impact": "Restores insulin sensitivity, improves thyroid function, reduces inflammation",
+        "timeline": "Levels correctable in 8–12 weeks"
+      },
+      {
+        "priority": 3,
+        "title": "Structured Activity Intervention",
+        "action": "30-minute brisk walk post-dinner (not morning — post-meal walks reduce glucose spikes by 22%). Add 2x/week resistance training.",
+        "impact": "Raises HDL by 5–8 mg/dL, lowers triglycerides by 20–30%",
+        "timeline": "Lipid improvement in 8–10 weeks"
+      }
+    ]
+  }
+}
