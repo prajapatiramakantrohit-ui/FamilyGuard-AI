@@ -27,7 +27,7 @@ That's it. No server, no build step, no dependencies to install.
 ```
 familyguard-ai/
 ├── index.html              # Main app shell + single inline application controller
-├── style.css               # Dark medical aesthetic (Space Mono + Syne fonts)
+├── style.css               # Light minimalist skeuomorphic aesthetic (Inter/SF Pro style)
 ├── gemini.js               # Gemini 1.5 Flash API (extraction + narrative)
 ├── riskEngine.js           # Core risk calculator using Indian thresholds
 ├── interventions.js        # Evidence-based intervention database
@@ -103,6 +103,11 @@ Calculates:
 ### 8. Validation & Export
 - Plausibility validation for all supported lab values (with unit-aware warnings)
 - One-click report export via print/PDF from the Results view
+
+### 9. 30-Day Health Autopilot
+- Weekly action plan based on the highest-risk markers
+- Next-best-action guidance with retest timing
+- Doctor-ready summary for clinic visits and handoff
 
 ---
 
@@ -186,13 +191,13 @@ All other code is vanilla JS with zero npm dependencies.
 
 ## 🎨 Design System
 
-- **Background**: `#0a0a0f`
-- **Surface**: `#12121a`
-- **Accent**: `#ff4444`
-- **Green (low risk)**: `#00d084`
-- **Yellow (medium)**: `#ffb347`
-- **Orange (high)**: `#ff6b35`
-- **Fonts**: Syne (display) + Space Mono (monospace)
+- **Background**: warm off-white paper tones with subtle texture
+- **Surface**: soft white / parchment cards with beveled edges
+- **Accent**: sage green and pale blue
+- **Green (low risk)**: muted sage
+- **Yellow (medium)**: soft wheat
+- **Orange (high)**: warm clay
+- **Fonts**: Inter with SF Pro-style system fallbacks
 
 ---
 

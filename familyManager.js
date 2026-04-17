@@ -91,16 +91,16 @@ const FamilyManager = (() => {
 
   function getRiskColor(level) {
     const colors = {
-      LOW: '#00d084',
-      MEDIUM: '#ffb347',
-      HIGH: '#ff6b35',
-      CRITICAL: '#ff4444'
+      LOW: '#2f9d6d',
+      MEDIUM: '#c58a1b',
+      HIGH: '#e08c4d',
+      CRITICAL: '#d55b65'
     };
     return colors[level] || '#888';
   }
 
   function getRiskEmoji(level) {
-    const emojis = { LOW: '🟢', MEDIUM: '🟡', HIGH: '🟠', CRITICAL: '🔴' };
+    const emojis = { LOW: '🟢', MEDIUM: '🟠', HIGH: '🟤', CRITICAL: '🔴' };
     return emojis[level] || '⚪';
   }
 

@@ -17,17 +17,17 @@ const UI = (() => {
     const startAngle = Math.PI;
     const endAngle = 0;
     const segments = [
-      { color: '#ff4444', from: 0, to: 0.25 },
-      { color: '#ff6b35', from: 0.25, to: 0.50 },
-      { color: '#ffb347', from: 0.50, to: 0.75 },
-      { color: '#00d084', from: 0.75, to: 1.0 }
+      { color: '#d55b65', from: 0, to: 0.25 },
+      { color: '#e08c4d', from: 0.25, to: 0.50 },
+      { color: '#c58a1b', from: 0.50, to: 0.75 },
+      { color: '#2f9d6d', from: 0.75, to: 1.0 }
     ];
 
     // Draw background track
     ctx.beginPath();
     ctx.arc(cx, cy, radius, Math.PI, 0, false);
     ctx.lineWidth = 22;
-    ctx.strokeStyle = '#1a1a2e';
+    ctx.strokeStyle = '#dbe3ec';
     ctx.stroke();
 
     // Draw colored segments
@@ -38,7 +38,7 @@ const UI = (() => {
       ctx.arc(cx, cy, radius, a1, a2, false);
       ctx.lineWidth = 18;
       ctx.strokeStyle = seg.color;
-      ctx.globalAlpha = 0.35;
+      ctx.globalAlpha = 0.55;
       ctx.stroke();
       ctx.globalAlpha = 1;
     }
@@ -53,7 +53,7 @@ const UI = (() => {
     ctx.lineWidth = 18;
     ctx.strokeStyle = fillColor;
     ctx.shadowColor = fillColor;
-    ctx.shadowBlur = 16;
+    ctx.shadowBlur = 10;
     ctx.stroke();
     ctx.shadowBlur = 0;
 
@@ -65,16 +65,16 @@ const UI = (() => {
     ctx.moveTo(cx, cy);
     ctx.lineTo(nx, ny);
     ctx.lineWidth = 3;
-    ctx.strokeStyle = '#ffffff';
-    ctx.shadowColor = '#ffffff';
-    ctx.shadowBlur = 8;
+    ctx.strokeStyle = '#334155';
+    ctx.shadowColor = '#94a3b8';
+    ctx.shadowBlur = 4;
     ctx.stroke();
     ctx.shadowBlur = 0;
 
     // Center circle
     ctx.beginPath();
     ctx.arc(cx, cy, 8, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#f8fafc';
     ctx.fill();
 
     // Score text
@@ -85,19 +85,19 @@ const UI = (() => {
     ctx.fillText(score, cx, cy - radius * 0.28);
 
     // Label
-    ctx.fillStyle = '#888';
+    ctx.fillStyle = '#667085';
     ctx.font = `${W * 0.055}px 'Space Mono', monospace`;
     ctx.fillText('HEALTH SCORE', cx, cy - radius * 0.28 + W * 0.095);
 
     // Labels
-    ctx.fillStyle = '#555';
+    ctx.fillStyle = '#7c8796';
     ctx.font = `${W * 0.04}px monospace`;
     ctx.fillText('CRITICAL', cx - radius * 0.92, cy + 20);
     ctx.fillText('OPTIMAL', cx + radius * 0.72, cy + 20);
   }
 
   function getRiskColor(level) {
-    const map = { LOW: '#00d084', MEDIUM: '#ffb347', HIGH: '#ff6b35', CRITICAL: '#ff4444' };
+    const map = { LOW: '#2f9d6d', MEDIUM: '#c58a1b', HIGH: '#e08c4d', CRITICAL: '#d55b65' };
     return map[level] || '#888';
   }
 
@@ -124,8 +124,8 @@ const UI = (() => {
     ];
 
     const gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(0, 'rgba(255, 68, 68, 0.6)');
-    gradient.addColorStop(1, 'rgba(255, 68, 68, 0.0)');
+    gradient.addColorStop(0, 'rgba(79, 120, 255, 0.28)');
+    gradient.addColorStop(1, 'rgba(79, 120, 255, 0.0)');
 
     timelineChart = new Chart(canvas, {
       type: 'line',
@@ -134,10 +134,10 @@ const UI = (() => {
         datasets: [{
           label: 'Disease Risk %',
           data,
-          borderColor: '#ff4444',
+          borderColor: '#4f78ff',
           backgroundColor: gradient,
           borderWidth: 2.5,
-          pointBackgroundColor: '#ff4444',
+          pointBackgroundColor: '#4f78ff',
           pointBorderColor: '#ffffff',
           pointBorderWidth: 2,
           pointRadius: 6,
@@ -151,11 +151,11 @@ const UI = (() => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: '#12121a',
-            borderColor: '#ff4444',
+            backgroundColor: '#ffffff',
+            borderColor: '#4f78ff',
             borderWidth: 1,
-            titleColor: '#ff4444',
-            bodyColor: '#ccc',
+            titleColor: '#1f2937',
+            bodyColor: '#334155',
             callbacks: {
               label: (ctx) => ` Disease Risk: ${ctx.parsed.y.toFixed(0)}%`
             }
@@ -163,14 +163,14 @@ const UI = (() => {
         },
         scales: {
           x: {
-            grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: '#666', font: { family: 'Space Mono', size: 10 } }
+            grid: { color: 'rgba(148,163,184,0.16)' },
+            ticks: { color: '#64748b', font: { family: 'Space Mono', size: 10 } }
           },
           y: {
             min: 0, max: 100,
-            grid: { color: 'rgba(255,255,255,0.05)' },
+            grid: { color: 'rgba(148,163,184,0.16)' },
             ticks: {
-              color: '#666',
+              color: '#64748b',
               font: { family: 'Space Mono', size: 10 },
               callback: v => `${v}%`
             }
@@ -196,7 +196,7 @@ const UI = (() => {
     container.innerHTML = categories.map(cat => {
       const raw = categoryScores[cat.key] || 0;
       const pct = Math.min(100, raw);
-      const color = pct >= 70 ? '#ff4444' : pct >= 40 ? '#ffb347' : '#00d084';
+      const color = pct >= 70 ? '#d55b65' : pct >= 40 ? '#c58a1b' : '#2f9d6d';
       const label = pct >= 70 ? 'HIGH' : pct >= 40 ? 'ELEVATED' : 'NORMAL';
       return `
         <div class="category-bar-item">
@@ -244,7 +244,7 @@ const UI = (() => {
       const history = Array.isArray(p.history) ? p.history : [];
       const trend = history.length >= 2 ? history[history.length - 1].overallScore - history[history.length - 2].overallScore : null;
       const trendLabel = trend === null ? '' : trend === 0 ? 'No change' : `${trend > 0 ? '+' : ''}${trend} vs last`; 
-      const trendColor = trend === null ? '#666' : trend > 0 ? '#00d084' : trend < 0 ? '#ff6b35' : '#888';
+      const trendColor = trend === null ? '#667085' : trend > 0 ? '#2f9d6d' : trend < 0 ? '#e08c4d' : '#7c8796';
       return `
         <div class="family-card" style="--accent:${color}">
           <div class="family-avatar" style="background:${color}22;border-color:${color}44">${initials}</div>

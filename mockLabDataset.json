@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "extraction": {"glucose_fasting": 108, "hba1c": 5.9, "cholesterol_total": 196, "cholesterol_ldl": 128, "cholesterol_hdl": 38, "triglycerides": 178, "vitaminD": 14, "vitaminB12": 182, "tsh": 4.6, "hemoglobin": 13.2, "creatinine": 1.1, "uric_acid": 6.8},
+    "truth": {"glucose_fasting": 108, "hba1c": 5.9, "cholesterol_total": 196, "cholesterol_ldl": 128, "cholesterol_hdl": 38, "triglycerides": 178, "vitaminD": 14, "vitaminB12": 182, "tsh": 4.6, "hemoglobin": 13.2, "creatinine": 1.1, "uric_acid": 6.8, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 2,
+    "extraction": {"glucose_fasting": 94, "hba1c": 5.5, "cholesterol_total": 172, "cholesterol_ldl": 104, "cholesterol_hdl": 49, "triglycerides": 138, "vitaminD": 22, "vitaminB12": 260, "tsh": 2.7, "hemoglobin": 13.8, "creatinine": 0.9, "uric_acid": 5.5},
+    "truth": {"glucose_fasting": 94, "hba1c": 5.5, "cholesterol_total": 172, "cholesterol_ldl": 104, "cholesterol_hdl": 49, "triglycerides": 138, "vitaminD": 22, "vitaminB12": 260, "tsh": 2.7, "hemoglobin": 13.8, "creatinine": 0.9, "uric_acid": 5.5, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 3,
+    "extraction": {"glucose_fasting": 126, "hba1c": 6.7, "cholesterol_total": 224, "cholesterol_ldl": 156, "cholesterol_hdl": 36, "triglycerides": 210, "vitaminD": 11, "vitaminB12": 205, "tsh": 5.8, "hemoglobin": 11.8, "creatinine": 1.3, "uric_acid": 7.4},
+    "truth": {"glucose_fasting": 126, "hba1c": 6.7, "cholesterol_total": 224, "cholesterol_ldl": 156, "cholesterol_hdl": 36, "triglycerides": 210, "vitaminD": 11, "vitaminB12": 205, "tsh": 5.8, "hemoglobin": 11.8, "creatinine": 1.3, "uric_acid": 7.4, "riskLevel": "CRITICAL"},
+    "prediction": {"riskLevel": "CRITICAL"}
+  },
+  {
+    "id": 4,
+    "extraction": {"glucose_fasting": 99, "hba1c": 5.7, "cholesterol_total": 181, "cholesterol_ldl": 112, "cholesterol_hdl": 43, "triglycerides": 149, "vitaminD": 19, "vitaminB12": 238, "tsh": 4.1, "hemoglobin": 12.9, "creatinine": 1.0, "uric_acid": 6.2},
+    "truth": {"glucose_fasting": 99, "hba1c": 5.7, "cholesterol_total": 181, "cholesterol_ldl": 112, "cholesterol_hdl": 43, "triglycerides": 149, "vitaminD": 19, "vitaminB12": 238, "tsh": 4.1, "hemoglobin": 12.9, "creatinine": 1.0, "uric_acid": 6.2, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 5,
+    "extraction": {"glucose_fasting": 90, "hba1c": 5.2, "cholesterol_total": 160, "cholesterol_ldl": 92, "cholesterol_hdl": 55, "triglycerides": 120, "vitaminD": 28, "vitaminB12": 312, "tsh": 2.1, "hemoglobin": 13.6, "creatinine": 0.84, "uric_acid": 4.9},
+    "truth": {"glucose_fasting": 90, "hba1c": 5.2, "cholesterol_total": 160, "cholesterol_ldl": 92, "cholesterol_hdl": 55, "triglycerides": 120, "vitaminD": 28, "vitaminB12": 312, "tsh": 2.1, "hemoglobin": 13.6, "creatinine": 0.84, "uric_acid": 4.9, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 6,
+    "extraction": {"glucose_fasting": 103, "hba1c": 5.8, "cholesterol_total": 188, "cholesterol_ldl": 118, "cholesterol_hdl": 41, "triglycerides": 154, "vitaminD": 16, "vitaminB12": 195, "tsh": 4.4, "hemoglobin": 12.7, "creatinine": 1.05, "uric_acid": 6.3},
+    "truth": {"glucose_fasting": 103, "hba1c": 5.8, "cholesterol_total": 188, "cholesterol_ldl": 118, "cholesterol_hdl": 41, "triglycerides": 154, "vitaminD": 16, "vitaminB12": 195, "tsh": 4.4, "hemoglobin": 12.7, "creatinine": 1.05, "uric_acid": 6.3, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 7,
+    "extraction": {"glucose_fasting": 88, "hba1c": 5.4, "cholesterol_total": 168, "cholesterol_ldl": 96, "cholesterol_hdl": 52, "triglycerides": 126, "vitaminD": 24, "vitaminB12": 248, "tsh": 2.8, "hemoglobin": 13.4, "creatinine": 0.88, "uric_acid": 5.0},
+    "truth": {"glucose_fasting": 88, "hba1c": 5.4, "cholesterol_total": 168, "cholesterol_ldl": 96, "cholesterol_hdl": 52, "triglycerides": 126, "vitaminD": 24, "vitaminB12": 248, "tsh": 2.8, "hemoglobin": 13.4, "creatinine": 0.88, "uric_acid": 5.0, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 8,
+    "extraction": {"glucose_fasting": 112, "hba1c": 6.0, "cholesterol_total": 204, "cholesterol_ldl": 132, "cholesterol_hdl": 39, "triglycerides": 165, "vitaminD": 13, "vitaminB12": 218, "tsh": 4.8, "hemoglobin": 12.4, "creatinine": 1.12, "uric_acid": 6.7},
+    "truth": {"glucose_fasting": 112, "hba1c": 6.0, "cholesterol_total": 204, "cholesterol_ldl": 132, "cholesterol_hdl": 39, "triglycerides": 165, "vitaminD": 13, "vitaminB12": 218, "tsh": 4.8, "hemoglobin": 12.4, "creatinine": 1.12, "uric_acid": 6.7, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 9,
+    "extraction": {"glucose_fasting": 96, "hba1c": 5.6, "cholesterol_total": 180, "cholesterol_ldl": 110, "cholesterol_hdl": 45, "triglycerides": 148, "vitaminD": 20, "vitaminB12": 240, "tsh": 4.0, "hemoglobin": 13.1, "creatinine": 0.95, "uric_acid": 6.0},
+    "truth": {"glucose_fasting": 96, "hba1c": 5.6, "cholesterol_total": 180, "cholesterol_ldl": 110, "cholesterol_hdl": 45, "triglycerides": 148, "vitaminD": 20, "vitaminB12": 240, "tsh": 4.0, "hemoglobin": 13.1, "creatinine": 0.95, "uric_acid": 6.0, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 10,
+    "extraction": {"glucose_fasting": 102, "hba1c": 5.8, "cholesterol_total": 192, "cholesterol_ldl": 124, "cholesterol_hdl": 40, "triglycerides": 151, "vitaminD": 18, "vitaminB12": 201, "tsh": 4.3, "hemoglobin": 12.8, "creatinine": 1.0, "uric_acid": 6.4},
+    "truth": {"glucose_fasting": 102, "hba1c": 5.8, "cholesterol_total": 192, "cholesterol_ldl": 124, "cholesterol_hdl": 40, "triglycerides": 151, "vitaminD": 18, "vitaminB12": 201, "tsh": 4.3, "hemoglobin": 12.8, "creatinine": 1.0, "uric_acid": 6.4, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 11,
+    "extraction": {"glucose_fasting": 92, "hba1c": 5.4, "cholesterol_total": 174, "cholesterol_ldl": 102, "cholesterol_hdl": 50, "triglycerides": 132, "vitaminD": 25, "vitaminB12": 305, "tsh": 2.5, "hemoglobin": 13.7, "creatinine": 0.9, "uric_acid": 5.2},
+    "truth": {"glucose_fasting": 92, "hba1c": 5.4, "cholesterol_total": 174, "cholesterol_ldl": 102, "cholesterol_hdl": 50, "triglycerides": 132, "vitaminD": 25, "vitaminB12": 305, "tsh": 2.5, "hemoglobin": 13.7, "creatinine": 0.9, "uric_acid": 5.2, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 12,
+    "extraction": {"glucose_fasting": 121, "hba1c": 6.4, "cholesterol_total": 218, "cholesterol_ldl": 146, "cholesterol_hdl": 37, "triglycerides": 198, "vitaminD": 15, "vitaminB12": 190, "tsh": 5.0, "hemoglobin": 12.0, "creatinine": 1.2, "uric_acid": 7.1},
+    "truth": {"glucose_fasting": 121, "hba1c": 6.4, "cholesterol_total": 218, "cholesterol_ldl": 146, "cholesterol_hdl": 37, "triglycerides": 198, "vitaminD": 15, "vitaminB12": 190, "tsh": 5.0, "hemoglobin": 12.0, "creatinine": 1.2, "uric_acid": 7.1, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 13,
+    "extraction": {"glucose_fasting": 89, "hba1c": 5.3, "cholesterol_total": 162, "cholesterol_ldl": 90, "cholesterol_hdl": 56, "triglycerides": 118, "vitaminD": 29, "vitaminB12": 290, "tsh": 2.0, "hemoglobin": 13.9, "creatinine": 0.83, "uric_acid": 4.7},
+    "truth": {"glucose_fasting": 89, "hba1c": 5.3, "cholesterol_total": 162, "cholesterol_ldl": 90, "cholesterol_hdl": 56, "triglycerides": 118, "vitaminD": 29, "vitaminB12": 290, "tsh": 2.0, "hemoglobin": 13.9, "creatinine": 0.83, "uric_acid": 4.7, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 14,
+    "extraction": {"glucose_fasting": 98, "hba1c": 5.7, "cholesterol_total": 184, "cholesterol_ldl": 116, "cholesterol_hdl": 44, "triglycerides": 146, "vitaminD": 21, "vitaminB12": 225, "tsh": 4.2, "hemoglobin": 12.6, "creatinine": 0.98, "uric_acid": 6.1},
+    "truth": {"glucose_fasting": 98, "hba1c": 5.7, "cholesterol_total": 184, "cholesterol_ldl": 116, "cholesterol_hdl": 44, "triglycerides": 146, "vitaminD": 21, "vitaminB12": 225, "tsh": 4.2, "hemoglobin": 12.6, "creatinine": 0.98, "uric_acid": 6.1, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 15,
+    "extraction": {"glucose_fasting": 107, "hba1c": 5.8, "cholesterol_total": 190, "cholesterol_ldl": 125, "cholesterol_hdl": 41, "triglycerides": 160, "vitaminD": 17, "vitaminB12": 210, "tsh": 4.5, "hemoglobin": 12.9, "creatinine": 1.02, "uric_acid": 6.5},
+    "truth": {"glucose_fasting": 107, "hba1c": 5.8, "cholesterol_total": 190, "cholesterol_ldl": 125, "cholesterol_hdl": 41, "triglycerides": 160, "vitaminD": 17, "vitaminB12": 210, "tsh": 4.5, "hemoglobin": 12.9, "creatinine": 1.02, "uric_acid": 6.5, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 16,
+    "extraction": {"glucose_fasting": 91, "hba1c": 5.2, "cholesterol_total": 165, "cholesterol_ldl": 98, "cholesterol_hdl": 51, "triglycerides": 124, "vitaminD": 26, "vitaminB12": 300, "tsh": 2.6, "hemoglobin": 13.5, "creatinine": 0.87, "uric_acid": 5.1},
+    "truth": {"glucose_fasting": 91, "hba1c": 5.2, "cholesterol_total": 165, "cholesterol_ldl": 98, "cholesterol_hdl": 51, "triglycerides": 124, "vitaminD": 26, "vitaminB12": 300, "tsh": 2.6, "hemoglobin": 13.5, "creatinine": 0.87, "uric_acid": 5.1, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 17,
+    "extraction": {"glucose_fasting": 116, "hba1c": 6.2, "cholesterol_total": 212, "cholesterol_ldl": 142, "cholesterol_hdl": 35, "triglycerides": 190, "vitaminD": 12, "vitaminB12": 188, "tsh": 5.3, "hemoglobin": 11.9, "creatinine": 1.18, "uric_acid": 7.0},
+    "truth": {"glucose_fasting": 116, "hba1c": 6.2, "cholesterol_total": 212, "cholesterol_ldl": 142, "cholesterol_hdl": 35, "triglycerides": 190, "vitaminD": 12, "vitaminB12": 188, "tsh": 5.3, "hemoglobin": 11.9, "creatinine": 1.18, "uric_acid": 7.0, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 18,
+    "extraction": {"glucose_fasting": 95, "hba1c": 5.6, "cholesterol_total": 179, "cholesterol_ldl": 111, "cholesterol_hdl": 47, "triglycerides": 145, "vitaminD": 20, "vitaminB12": 245, "tsh": 4.0, "hemoglobin": 13.0, "creatinine": 0.93, "uric_acid": 5.8},
+    "truth": {"glucose_fasting": 95, "hba1c": 5.6, "cholesterol_total": 179, "cholesterol_ldl": 111, "cholesterol_hdl": 47, "triglycerides": 145, "vitaminD": 20, "vitaminB12": 245, "tsh": 4.0, "hemoglobin": 13.0, "creatinine": 0.93, "uric_acid": 5.8, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 19,
+    "extraction": {"glucose_fasting": 100, "hba1c": 5.8, "cholesterol_total": 186, "cholesterol_ldl": 120, "cholesterol_hdl": 42, "triglycerides": 152, "vitaminD": 18, "vitaminB12": 215, "tsh": 4.3, "hemoglobin": 12.8, "creatinine": 1.03, "uric_acid": 6.3},
+    "truth": {"glucose_fasting": 100, "hba1c": 5.8, "cholesterol_total": 186, "cholesterol_ldl": 120, "cholesterol_hdl": 42, "triglycerides": 152, "vitaminD": 18, "vitaminB12": 215, "tsh": 4.3, "hemoglobin": 12.8, "creatinine": 1.03, "uric_acid": 6.3, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 20,
+    "extraction": {"glucose_fasting": 129, "hba1c": 6.8, "cholesterol_total": 230, "cholesterol_ldl": 158, "cholesterol_hdl": 34, "triglycerides": 214, "vitaminD": 10, "vitaminB12": 175, "tsh": 5.6, "hemoglobin": 11.7, "creatinine": 1.32, "uric_acid": 7.5},
+    "truth": {"glucose_fasting": 129, "hba1c": 6.8, "cholesterol_total": 230, "cholesterol_ldl": 158, "cholesterol_hdl": 34, "triglycerides": 214, "vitaminD": 10, "vitaminB12": 175, "tsh": 5.6, "hemoglobin": 11.7, "creatinine": 1.32, "uric_acid": 7.5, "riskLevel": "CRITICAL"},
+    "prediction": {"riskLevel": "CRITICAL"}
+  },
+  {
+    "id": 21,
+    "extraction": {"glucose_fasting": 93, "hba1c": 5.4, "cholesterol_total": 171, "cholesterol_ldl": 99, "cholesterol_hdl": 54, "triglycerides": 127, "vitaminD": 27, "vitaminB12": 296, "tsh": 2.4, "hemoglobin": 13.6, "creatinine": 0.86, "uric_acid": 4.8},
+    "truth": {"glucose_fasting": 93, "hba1c": 5.4, "cholesterol_total": 171, "cholesterol_ldl": 99, "cholesterol_hdl": 54, "triglycerides": 127, "vitaminD": 27, "vitaminB12": 296, "tsh": 2.4, "hemoglobin": 13.6, "creatinine": 0.86, "uric_acid": 4.8, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 22,
+    "extraction": {"glucose_fasting": 104, "hba1c": 5.9, "cholesterol_total": 193, "cholesterol_ldl": 126, "cholesterol_hdl": 40, "triglycerides": 158, "vitaminD": 15, "vitaminB12": 208, "tsh": 4.7, "hemoglobin": 12.5, "creatinine": 1.04, "uric_acid": 6.4},
+    "truth": {"glucose_fasting": 104, "hba1c": 5.9, "cholesterol_total": 193, "cholesterol_ldl": 126, "cholesterol_hdl": 40, "triglycerides": 158, "vitaminD": 15, "vitaminB12": 208, "tsh": 4.7, "hemoglobin": 12.5, "creatinine": 1.04, "uric_acid": 6.4, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 23,
+    "extraction": {"glucose_fasting": 87, "hba1c": 5.1, "cholesterol_total": 158, "cholesterol_ldl": 89, "cholesterol_hdl": 57, "triglycerides": 116, "vitaminD": 30, "vitaminB12": 320, "tsh": 1.9, "hemoglobin": 13.7, "creatinine": 0.82, "uric_acid": 4.6},
+    "truth": {"glucose_fasting": 87, "hba1c": 5.1, "cholesterol_total": 158, "cholesterol_ldl": 89, "cholesterol_hdl": 57, "triglycerides": 116, "vitaminD": 30, "vitaminB12": 320, "tsh": 1.9, "hemoglobin": 13.7, "creatinine": 0.82, "uric_acid": 4.6, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 24,
+    "extraction": {"glucose_fasting": 101, "hba1c": 5.7, "cholesterol_total": 182, "cholesterol_ldl": 114, "cholesterol_hdl": 44, "triglycerides": 150, "vitaminD": 19, "vitaminB12": 231, "tsh": 4.2, "hemoglobin": 12.7, "creatinine": 0.97, "uric_acid": 6.0},
+    "truth": {"glucose_fasting": 101, "hba1c": 5.7, "cholesterol_total": 182, "cholesterol_ldl": 114, "cholesterol_hdl": 44, "triglycerides": 150, "vitaminD": 19, "vitaminB12": 231, "tsh": 4.2, "hemoglobin": 12.7, "creatinine": 0.97, "uric_acid": 6.0, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 25,
+    "extraction": {"glucose_fasting": 110, "hba1c": 6.1, "cholesterol_total": 200, "cholesterol_ldl": 130, "cholesterol_hdl": 39, "triglycerides": 168, "vitaminD": 14, "vitaminB12": 199, "tsh": 4.9, "hemoglobin": 12.3, "creatinine": 1.08, "uric_acid": 6.6},
+    "truth": {"glucose_fasting": 110, "hba1c": 6.1, "cholesterol_total": 200, "cholesterol_ldl": 130, "cholesterol_hdl": 39, "triglycerides": 168, "vitaminD": 14, "vitaminB12": 199, "tsh": 4.9, "hemoglobin": 12.3, "creatinine": 1.08, "uric_acid": 6.6, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 26,
+    "extraction": {"glucose_fasting": 94, "hba1c": 5.5, "cholesterol_total": 169, "cholesterol_ldl": 97, "cholesterol_hdl": 50, "triglycerides": 128, "vitaminD": 23, "vitaminB12": 265, "tsh": 2.8, "hemoglobin": 13.4, "creatinine": 0.89, "uric_acid": 5.2},
+    "truth": {"glucose_fasting": 94, "hba1c": 5.5, "cholesterol_total": 169, "cholesterol_ldl": 97, "cholesterol_hdl": 50, "triglycerides": 128, "vitaminD": 23, "vitaminB12": 265, "tsh": 2.8, "hemoglobin": 13.4, "creatinine": 0.89, "uric_acid": 5.2, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 27,
+    "extraction": {"glucose_fasting": 124, "hba1c": 6.5, "cholesterol_total": 216, "cholesterol_ldl": 148, "cholesterol_hdl": 36, "triglycerides": 202, "vitaminD": 11, "vitaminB12": 184, "tsh": 5.4, "hemoglobin": 12.0, "creatinine": 1.25, "uric_acid": 7.2},
+    "truth": {"glucose_fasting": 124, "hba1c": 6.5, "cholesterol_total": 216, "cholesterol_ldl": 148, "cholesterol_hdl": 36, "triglycerides": 202, "vitaminD": 11, "vitaminB12": 184, "tsh": 5.4, "hemoglobin": 12.0, "creatinine": 1.25, "uric_acid": 7.2, "riskLevel": "CRITICAL"},
+    "prediction": {"riskLevel": "CRITICAL"}
+  },
+  {
+    "id": 28,
+    "extraction": {"glucose_fasting": 97, "hba1c": 5.7, "cholesterol_total": 183, "cholesterol_ldl": 119, "cholesterol_hdl": 43, "triglycerides": 147, "vitaminD": 20, "vitaminB12": 236, "tsh": 4.0, "hemoglobin": 12.9, "creatinine": 0.96, "uric_acid": 6.1},
+    "truth": {"glucose_fasting": 97, "hba1c": 5.7, "cholesterol_total": 183, "cholesterol_ldl": 119, "cholesterol_hdl": 43, "triglycerides": 147, "vitaminD": 20, "vitaminB12": 236, "tsh": 4.0, "hemoglobin": 12.9, "creatinine": 0.96, "uric_acid": 6.1, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 29,
+    "extraction": {"glucose_fasting": 105, "hba1c": 5.8, "cholesterol_total": 189, "cholesterol_ldl": 122, "cholesterol_hdl": 42, "triglycerides": 159, "vitaminD": 17, "vitaminB12": 212, "tsh": 4.5, "hemoglobin": 12.6, "creatinine": 1.01, "uric_acid": 6.4},
+    "truth": {"glucose_fasting": 105, "hba1c": 5.8, "cholesterol_total": 189, "cholesterol_ldl": 122, "cholesterol_hdl": 42, "triglycerides": 159, "vitaminD": 17, "vitaminB12": 212, "tsh": 4.5, "hemoglobin": 12.6, "creatinine": 1.01, "uric_acid": 6.4, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 30,
+    "extraction": {"glucose_fasting": 89, "hba1c": 5.3, "cholesterol_total": 166, "cholesterol_ldl": 94, "cholesterol_hdl": 53, "triglycerides": 122, "vitaminD": 24, "vitaminB12": 274, "tsh": 2.3, "hemoglobin": 13.5, "creatinine": 0.85, "uric_acid": 4.9},
+    "truth": {"glucose_fasting": 89, "hba1c": 5.3, "cholesterol_total": 166, "cholesterol_ldl": 94, "cholesterol_hdl": 53, "triglycerides": 122, "vitaminD": 24, "vitaminB12": 274, "tsh": 2.3, "hemoglobin": 13.5, "creatinine": 0.85, "uric_acid": 4.9, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  }
+  ,{
+    "id": 31,
+    "extraction": {"glucose_fasting": 109, "hba1c": 5.8, "cholesterol_total": 191, "cholesterol_ldl": 126, "cholesterol_hdl": 41, "triglycerides": 157, "vitaminD": 17, "vitaminB12": 214, "tsh": 4.4, "hemoglobin": 12.8, "creatinine": 1.02, "uric_acid": 6.4},
+    "truth": {"glucose_fasting": 109, "hba1c": 5.8, "cholesterol_total": 191, "cholesterol_ldl": 126, "cholesterol_hdl": 41, "triglycerides": 157, "vitaminD": 17, "vitaminB12": 214, "tsh": 4.4, "hemoglobin": 12.8, "creatinine": 1.02, "uric_acid": 6.4, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 32,
+    "extraction": {"glucose_fasting": 95, "hba1c": 5.6, "cholesterol_total": 178, "cholesterol_ldl": 108, "cholesterol_hdl": 48, "triglycerides": 143, "vitaminD": 21, "vitaminB12": 246, "tsh": 3.8, "hemoglobin": 13.1, "creatinine": 0.92, "uric_acid": 5.7},
+    "truth": {"glucose_fasting": 95, "hba1c": 5.6, "cholesterol_total": 178, "cholesterol_ldl": 108, "cholesterol_hdl": 48, "triglycerides": 143, "vitaminD": 21, "vitaminB12": 246, "tsh": 3.8, "hemoglobin": 13.1, "creatinine": 0.92, "uric_acid": 5.7, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 33,
+    "extraction": {"glucose_fasting": 120, "hba1c": 6.3, "cholesterol_total": 210, "cholesterol_ldl": 140, "cholesterol_hdl": 37, "triglycerides": 186, "vitaminD": 13, "vitaminB12": 197, "tsh": 5.2, "hemoglobin": 12.2, "creatinine": 1.14, "uric_acid": 7.0},
+    "truth": {"glucose_fasting": 120, "hba1c": 6.3, "cholesterol_total": 210, "cholesterol_ldl": 140, "cholesterol_hdl": 37, "triglycerides": 186, "vitaminD": 13, "vitaminB12": 197, "tsh": 5.2, "hemoglobin": 12.2, "creatinine": 1.14, "uric_acid": 7.0, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 34,
+    "extraction": {"glucose_fasting": 90, "hba1c": 5.2, "cholesterol_total": 164, "cholesterol_ldl": 96, "cholesterol_hdl": 54, "triglycerides": 121, "vitaminD": 26, "vitaminB12": 301, "tsh": 2.2, "hemoglobin": 13.8, "creatinine": 0.88, "uric_acid": 4.8},
+    "truth": {"glucose_fasting": 90, "hba1c": 5.2, "cholesterol_total": 164, "cholesterol_ldl": 96, "cholesterol_hdl": 54, "triglycerides": 121, "vitaminD": 26, "vitaminB12": 301, "tsh": 2.2, "hemoglobin": 13.8, "creatinine": 0.88, "uric_acid": 4.8, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 35,
+    "extraction": {"glucose_fasting": 100, "hba1c": 5.7, "cholesterol_total": 185, "cholesterol_ldl": 117, "cholesterol_hdl": 43, "triglycerides": 150, "vitaminD": 19, "vitaminB12": 234, "tsh": 4.1, "hemoglobin": 12.7, "creatinine": 0.99, "uric_acid": 6.1},
+    "truth": {"glucose_fasting": 100, "hba1c": 5.7, "cholesterol_total": 185, "cholesterol_ldl": 117, "cholesterol_hdl": 43, "triglycerides": 150, "vitaminD": 19, "vitaminB12": 234, "tsh": 4.1, "hemoglobin": 12.7, "creatinine": 0.99, "uric_acid": 6.1, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 36,
+    "extraction": {"glucose_fasting": 113, "hba1c": 6.0, "cholesterol_total": 197, "cholesterol_ldl": 129, "cholesterol_hdl": 40, "triglycerides": 161, "vitaminD": 15, "vitaminB12": 206, "tsh": 4.7, "hemoglobin": 12.4, "creatinine": 1.05, "uric_acid": 6.3},
+    "truth": {"glucose_fasting": 113, "hba1c": 6.0, "cholesterol_total": 197, "cholesterol_ldl": 129, "cholesterol_hdl": 40, "triglycerides": 161, "vitaminD": 15, "vitaminB12": 206, "tsh": 4.7, "hemoglobin": 12.4, "creatinine": 1.05, "uric_acid": 6.3, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 37,
+    "extraction": {"glucose_fasting": 92, "hba1c": 5.4, "cholesterol_total": 170, "cholesterol_ldl": 100, "cholesterol_hdl": 52, "triglycerides": 129, "vitaminD": 25, "vitaminB12": 270, "tsh": 2.6, "hemoglobin": 13.4, "creatinine": 0.9, "uric_acid": 5.0},
+    "truth": {"glucose_fasting": 92, "hba1c": 5.4, "cholesterol_total": 170, "cholesterol_ldl": 100, "cholesterol_hdl": 52, "triglycerides": 129, "vitaminD": 25, "vitaminB12": 270, "tsh": 2.6, "hemoglobin": 13.4, "creatinine": 0.9, "uric_acid": 5.0, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 38,
+    "extraction": {"glucose_fasting": 128, "hba1c": 6.7, "cholesterol_total": 226, "cholesterol_ldl": 154, "cholesterol_hdl": 35, "triglycerides": 208, "vitaminD": 12, "vitaminB12": 181, "tsh": 5.7, "hemoglobin": 11.9, "creatinine": 1.31, "uric_acid": 7.3},
+    "truth": {"glucose_fasting": 128, "hba1c": 6.7, "cholesterol_total": 226, "cholesterol_ldl": 154, "cholesterol_hdl": 35, "triglycerides": 208, "vitaminD": 12, "vitaminB12": 181, "tsh": 5.7, "hemoglobin": 11.9, "creatinine": 1.31, "uric_acid": 7.3, "riskLevel": "CRITICAL"},
+    "prediction": {"riskLevel": "CRITICAL"}
+  },
+  {
+    "id": 39,
+    "extraction": {"glucose_fasting": 97, "hba1c": 5.7, "cholesterol_total": 183, "cholesterol_ldl": 113, "cholesterol_hdl": 45, "triglycerides": 146, "vitaminD": 20, "vitaminB12": 233, "tsh": 4.0, "hemoglobin": 13.0, "creatinine": 0.94, "uric_acid": 5.9},
+    "truth": {"glucose_fasting": 97, "hba1c": 5.7, "cholesterol_total": 183, "cholesterol_ldl": 113, "cholesterol_hdl": 45, "triglycerides": 146, "vitaminD": 20, "vitaminB12": 233, "tsh": 4.0, "hemoglobin": 13.0, "creatinine": 0.94, "uric_acid": 5.9, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 40,
+    "extraction": {"glucose_fasting": 106, "hba1c": 5.8, "cholesterol_total": 194, "cholesterol_ldl": 123, "cholesterol_hdl": 41, "triglycerides": 162, "vitaminD": 16, "vitaminB12": 212, "tsh": 4.5, "hemoglobin": 12.5, "creatinine": 1.01, "uric_acid": 6.2},
+    "truth": {"glucose_fasting": 106, "hba1c": 5.8, "cholesterol_total": 194, "cholesterol_ldl": 123, "cholesterol_hdl": 41, "triglycerides": 162, "vitaminD": 16, "vitaminB12": 212, "tsh": 4.5, "hemoglobin": 12.5, "creatinine": 1.01, "uric_acid": 6.2, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 41,
+    "extraction": {"glucose_fasting": 89, "hba1c": 5.3, "cholesterol_total": 167, "cholesterol_ldl": 95, "cholesterol_hdl": 55, "triglycerides": 125, "vitaminD": 27, "vitaminB12": 285, "tsh": 2.1, "hemoglobin": 13.6, "creatinine": 0.84, "uric_acid": 4.7},
+    "truth": {"glucose_fasting": 89, "hba1c": 5.3, "cholesterol_total": 167, "cholesterol_ldl": 95, "cholesterol_hdl": 55, "triglycerides": 125, "vitaminD": 27, "vitaminB12": 285, "tsh": 2.1, "hemoglobin": 13.6, "creatinine": 0.84, "uric_acid": 4.7, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 42,
+    "extraction": {"glucose_fasting": 118, "hba1c": 6.2, "cholesterol_total": 214, "cholesterol_ldl": 143, "cholesterol_hdl": 38, "triglycerides": 189, "vitaminD": 13, "vitaminB12": 194, "tsh": 5.1, "hemoglobin": 12.1, "creatinine": 1.16, "uric_acid": 7.0},
+    "truth": {"glucose_fasting": 118, "hba1c": 6.2, "cholesterol_total": 214, "cholesterol_ldl": 143, "cholesterol_hdl": 38, "triglycerides": 189, "vitaminD": 13, "vitaminB12": 194, "tsh": 5.1, "hemoglobin": 12.1, "creatinine": 1.16, "uric_acid": 7.0, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 43,
+    "extraction": {"glucose_fasting": 94, "hba1c": 5.5, "cholesterol_total": 175, "cholesterol_ldl": 106, "cholesterol_hdl": 49, "triglycerides": 133, "vitaminD": 24, "vitaminB12": 250, "tsh": 2.7, "hemoglobin": 13.3, "creatinine": 0.9, "uric_acid": 5.3},
+    "truth": {"glucose_fasting": 94, "hba1c": 5.5, "cholesterol_total": 175, "cholesterol_ldl": 106, "cholesterol_hdl": 49, "triglycerides": 133, "vitaminD": 24, "vitaminB12": 250, "tsh": 2.7, "hemoglobin": 13.3, "creatinine": 0.9, "uric_acid": 5.3, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 44,
+    "extraction": {"glucose_fasting": 99, "hba1c": 5.7, "cholesterol_total": 182, "cholesterol_ldl": 115, "cholesterol_hdl": 44, "triglycerides": 149, "vitaminD": 19, "vitaminB12": 228, "tsh": 4.2, "hemoglobin": 12.7, "creatinine": 0.97, "uric_acid": 6.0},
+    "truth": {"glucose_fasting": 99, "hba1c": 5.7, "cholesterol_total": 182, "cholesterol_ldl": 115, "cholesterol_hdl": 44, "triglycerides": 149, "vitaminD": 19, "vitaminB12": 228, "tsh": 4.2, "hemoglobin": 12.7, "creatinine": 0.97, "uric_acid": 6.0, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 45,
+    "extraction": {"glucose_fasting": 111, "hba1c": 5.9, "cholesterol_total": 199, "cholesterol_ldl": 131, "cholesterol_hdl": 40, "triglycerides": 166, "vitaminD": 15, "vitaminB12": 209, "tsh": 4.6, "hemoglobin": 12.4, "creatinine": 1.06, "uric_acid": 6.4},
+    "truth": {"glucose_fasting": 111, "hba1c": 5.9, "cholesterol_total": 199, "cholesterol_ldl": 131, "cholesterol_hdl": 40, "triglycerides": 166, "vitaminD": 15, "vitaminB12": 209, "tsh": 4.6, "hemoglobin": 12.4, "creatinine": 1.06, "uric_acid": 6.4, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 46,
+    "extraction": {"glucose_fasting": 90, "hba1c": 5.2, "cholesterol_total": 161, "cholesterol_ldl": 91, "cholesterol_hdl": 56, "triglycerides": 118, "vitaminD": 28, "vitaminB12": 310, "tsh": 2.0, "hemoglobin": 13.8, "creatinine": 0.83, "uric_acid": 4.6},
+    "truth": {"glucose_fasting": 90, "hba1c": 5.2, "cholesterol_total": 161, "cholesterol_ldl": 91, "cholesterol_hdl": 56, "triglycerides": 118, "vitaminD": 28, "vitaminB12": 310, "tsh": 2.0, "hemoglobin": 13.8, "creatinine": 0.83, "uric_acid": 4.6, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  },
+  {
+    "id": 47,
+    "extraction": {"glucose_fasting": 124, "hba1c": 6.5, "cholesterol_total": 220, "cholesterol_ldl": 150, "cholesterol_hdl": 36, "triglycerides": 205, "vitaminD": 12, "vitaminB12": 180, "tsh": 5.5, "hemoglobin": 11.8, "creatinine": 1.27, "uric_acid": 7.3},
+    "truth": {"glucose_fasting": 124, "hba1c": 6.5, "cholesterol_total": 220, "cholesterol_ldl": 150, "cholesterol_hdl": 36, "triglycerides": 205, "vitaminD": 12, "vitaminB12": 180, "tsh": 5.5, "hemoglobin": 11.8, "creatinine": 1.27, "uric_acid": 7.3, "riskLevel": "CRITICAL"},
+    "prediction": {"riskLevel": "CRITICAL"}
+  },
+  {
+    "id": 48,
+    "extraction": {"glucose_fasting": 98, "hba1c": 5.6, "cholesterol_total": 184, "cholesterol_ldl": 113, "cholesterol_hdl": 46, "triglycerides": 147, "vitaminD": 20, "vitaminB12": 232, "tsh": 4.0, "hemoglobin": 13.0, "creatinine": 0.95, "uric_acid": 5.9},
+    "truth": {"glucose_fasting": 98, "hba1c": 5.6, "cholesterol_total": 184, "cholesterol_ldl": 113, "cholesterol_hdl": 46, "triglycerides": 147, "vitaminD": 20, "vitaminB12": 232, "tsh": 4.0, "hemoglobin": 13.0, "creatinine": 0.95, "uric_acid": 5.9, "riskLevel": "MEDIUM"},
+    "prediction": {"riskLevel": "MEDIUM"}
+  },
+  {
+    "id": 49,
+    "extraction": {"glucose_fasting": 103, "hba1c": 5.8, "cholesterol_total": 190, "cholesterol_ldl": 124, "cholesterol_hdl": 41, "triglycerides": 155, "vitaminD": 17, "vitaminB12": 213, "tsh": 4.5, "hemoglobin": 12.6, "creatinine": 1.02, "uric_acid": 6.3},
+    "truth": {"glucose_fasting": 103, "hba1c": 5.8, "cholesterol_total": 190, "cholesterol_ldl": 124, "cholesterol_hdl": 41, "triglycerides": 155, "vitaminD": 17, "vitaminB12": 213, "tsh": 4.5, "hemoglobin": 12.6, "creatinine": 1.02, "uric_acid": 6.3, "riskLevel": "HIGH"},
+    "prediction": {"riskLevel": "HIGH"}
+  },
+  {
+    "id": 50,
+    "extraction": {"glucose_fasting": 91, "hba1c": 5.3, "cholesterol_total": 168, "cholesterol_ldl": 97, "cholesterol_hdl": 53, "triglycerides": 126, "vitaminD": 24, "vitaminB12": 268, "tsh": 2.4, "hemoglobin": 13.6, "creatinine": 0.86, "uric_acid": 4.9},
+    "truth": {"glucose_fasting": 91, "hba1c": 5.3, "cholesterol_total": 168, "cholesterol_ldl": 97, "cholesterol_hdl": 53, "triglycerides": 126, "vitaminD": 24, "vitaminB12": 268, "tsh": 2.4, "hemoglobin": 13.6, "creatinine": 0.86, "uric_acid": 4.9, "riskLevel": "LOW"},
+    "prediction": {"riskLevel": "LOW"}
+  }
+]

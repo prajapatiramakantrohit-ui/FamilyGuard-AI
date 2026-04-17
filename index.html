@@ -20,41 +20,68 @@
 <!-- ─── App Wrapper ────────────────────────────────────────────────────────── -->
 <div class="app-wrapper">
 
-  <!-- Header -->
-  <header class="app-header">
-    <div class="brand">
-      <div class="brand-icon">🛡️</div>
-      <div class="brand-text">
-        <h1>Family<span>Guard</span> AI</h1>
-        <div class="brand-tagline">Pre-Disease Interception Engine</div>
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-name">FamilyGuard AI</div>
+        <div class="logo-tag">Pre-disease interception</div>
       </div>
-    </div>
-    <div class="header-actions">
-      <button class="btn btn-demo" id="btn-demo">▶ Run Demo</button>
-      <button class="btn btn-secondary" data-nav="section-family">
-        👨‍👩‍👧 Family <span class="family-badge" id="family-count">0</span>
+
+      <button class="nav-item active" data-nav="section-home" onclick="switchNav(this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+        Dashboard
       </button>
-    </div>
-  </header>
+      <button class="nav-item" data-nav="section-upload" onclick="switchNav(this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 10V3M5 6l3-3 3 3"/><path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+        Upload Report
+      </button>
+      <button class="nav-item" data-nav="section-input" onclick="switchNav(this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h10v10H3z"/><path d="M5 6h6M5 9h4"/></svg>
+        Enter Data
+      </button>
+      <button class="nav-item" data-nav="section-results" onclick="switchNav(this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13h12"/><path d="M4 11V6M8 11V3M12 11V8"/></svg>
+        Results
+      </button>
+      <button class="nav-item" data-nav="section-family" onclick="switchNav(this)">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="5" r="2"/><circle cx="11" cy="6" r="1.5"/><path d="M2.5 13c0-2 1.7-3.5 3.5-3.5s3.5 1.5 3.5 3.5"/><path d="M9 13c.1-1.2.8-2.2 1.8-2.8"/></svg>
+        Family
+      </button>
 
-  <!-- Safety Banner (always visible) -->
-  <div class="safety-banner">
-    <span class="safety-icon">⚠️</span>
-    <span>
-      <strong>Medical Disclaimer:</strong> FamilyGuard AI is a health risk <em>awareness</em> tool only — it is NOT a diagnostic tool.
-      All results are for informational purposes. Always consult a qualified physician for medical decisions.
-      No medication advice is provided or implied.
-    </span>
-  </div>
+      <div class="nav-section">Family</div>
+      <div class="family-list">
+        <div class="family-card" data-demo="arun" title="Load Arun demo profile">
+          <div class="family-name">Arun Sharma</div>
+          <div class="family-meta">42y · Male</div>
+          <span class="risk-badge badge-medium">Medium Risk</span>
+        </div>
+        <div class="family-card" data-demo="priya" title="Load Priya demo profile">
+          <div class="family-name">Priya Sharma</div>
+          <div class="family-meta">38y · Female</div>
+          <span class="risk-badge badge-low">Low Risk</span>
+        </div>
+        <div class="family-card" data-demo="rajan" title="Load Rajan demo profile">
+          <div class="family-name">Rajan Sharma</div>
+          <div class="family-meta">68y · Male</div>
+          <span class="risk-badge badge-high">High Risk</span>
+        </div>
+        <button class="btn" style="width:100%;margin-top:8px;font-size:12px" onclick="switchToSection('section-upload')">+ Add member</button>
+      </div>
+    </aside>
 
-  <!-- Navigation -->
-  <nav class="main-nav">
-    <button class="nav-btn active" data-nav="section-home" onclick="switchNav(this)">🏠 Home</button>
-    <button class="nav-btn" data-nav="section-upload" onclick="switchNav(this)">📋 Upload Report</button>
-    <button class="nav-btn" data-nav="section-input" onclick="switchNav(this)">📝 Enter Data</button>
-    <button class="nav-btn" data-nav="section-results" onclick="switchNav(this)">📊 Results</button>
-    <button class="nav-btn" data-nav="section-family" onclick="switchNav(this)">👨‍👩‍👧 Family</button>
-  </nav>
+    <div class="main-panel">
+      <div class="topbar">
+        <div>
+          <div class="topbar-title" id="topbar-title">Arjun Sharma — Health Dashboard</div>
+          <div class="topbar-sub" id="topbar-sub">Last updated: 14 Apr 2026 · Indian clinical thresholds applied</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">
+          <button class="btn" data-nav="section-upload" onclick="switchNav(this)">Upload new report</button>
+          <button class="btn btn-primary" onclick="window.print()">Export PDF</button>
+        </div>
+      </div>
+
+      <div class="content">
 
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <!-- SECTION: HOME -->
@@ -93,6 +120,37 @@
     <div style="font-size:10px;color:var(--text-dim);text-align:center;margin:-10px 0 22px;">
       Source notes: ICMR-ININDIAB and Indian public-health reports for prevalence context; intervention-preventability statistic shown as directional awareness estimate.
       See README Clinical References for full links.
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><span class="icon">🩺</span> Reviewed by Medical Advisor <span class="demo-watermark">DEMO</span></div>
+        <div id="advisor-panel"></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">📈</span> Model Performance Dashboard <span class="demo-watermark">DEMO</span></div>
+        <div id="performance-dashboard"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">✅</span> Clinical Validation Pack <span class="demo-watermark">DEMO</span></div>
+      <div id="validation-panel"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🔒</span> Privacy & Security <span class="demo-watermark">DEMO</span></div>
+      <div id="security-panel"></div>
+      <div class="grid-2" style="margin-top:14px;">
+        <div>
+          <div class="section-title" style="margin-top:0">Audit log</div>
+          <ul id="audit-log" class="mini-list"></ul>
+        </div>
+        <div>
+          <div class="section-title" style="margin-top:0">Reminders</div>
+          <ul id="reminder-list" class="mini-list"></ul>
+        </div>
+      </div>
     </div>
 
     <!-- API Key Card -->
@@ -183,6 +241,16 @@
         <label style="display:flex;align-items:flex-start;gap:8px;color:var(--text-muted);cursor:pointer;">
           <input type="checkbox" id="extraction-verified" style="margin-top:2px;">
           <span>I reviewed all extracted values and corrected any mistakes before analysis.</span>
+        </label>
+      </div>
+
+      <div class="card" style="margin-top:16px;background:rgba(58,110,255,0.04);border-color:rgba(58,110,255,0.16)">
+        <div class="card-title"><span class="icon">🔎</span> OCR Reliability & Fallback</div>
+        <div id="ocr-panel" class="ocr-panel"></div>
+        <div id="ocr-confidence" class="ocr-confidence">Confidence: —</div>
+        <label class="ocr-verify">
+          <input type="checkbox" id="manual-verify-checkbox">
+          <span>Verify manually if confidence is low</span>
         </label>
       </div>
     </div>
@@ -394,6 +462,24 @@
       </div>
     </div>
 
+    <div class="dashboard-strip results-strip">
+      <div class="dashboard-panel dashboard-panel--accent">
+        <div class="dashboard-panel-label">Overall score</div>
+        <div class="dashboard-panel-value" id="result-score">—</div>
+        <div class="dashboard-panel-meta">Current health snapshot</div>
+      </div>
+      <div class="dashboard-panel">
+        <div class="dashboard-panel-label">Borderline signals</div>
+        <div class="dashboard-panel-value" id="result-borderline-count">—</div>
+        <div class="dashboard-panel-meta">Within 10% of Indian thresholds</div>
+      </div>
+      <div class="dashboard-panel">
+        <div class="dashboard-panel-label">Family members</div>
+        <div class="dashboard-panel-value" id="family-count-results">0</div>
+        <div class="dashboard-panel-meta">Saved locally in this browser</div>
+      </div>
+    </div>
+
     <!-- Main results grid -->
     <div class="results-grid">
 
@@ -417,6 +503,7 @@
             Run an analysis to see your personalized health narrative.
           </div>
           <div class="narrative-insight" id="result-insight"></div>
+          <div id="explainability-stack" class="explainability-stack"></div>
         </div>
 
         <div class="card">
@@ -427,6 +514,11 @@
           <div style="font-size:10px;color:var(--text-dim);margin-top:8px;text-align:center;">
             Projected disease risk if current lifestyle continues unchanged
           </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">⏳</span> What Changes in 30 Days</div>
+          <div id="outcome-simulator"></div>
         </div>
       </div>
 
@@ -445,6 +537,26 @@
     <div class="card">
       <div class="card-title"><span class="icon">🎯</span> Your 3 Priority Interventions</div>
       <div id="interventions-list"></div>
+    </div>
+
+    <!-- 30-Day Autopilot -->
+    <div class="card" style="background:linear-gradient(180deg,#ffffff,#f7fbff);border-color:rgba(79,120,255,0.16)">
+      <div class="card-title"><span class="icon">🧭</span> 30-Day Health Autopilot</div>
+      <div id="autopilot-next" class="autopilot-next"></div>
+      <div id="autopilot-steps" class="autopilot-steps"></div>
+    </div>
+
+    <!-- Doctor Ready Summary -->
+    <div class="card" style="background:linear-gradient(180deg,#ffffff,#f8fafc)">
+      <div class="card-title"><span class="icon">📄</span> Doctor-Ready Summary <span class="demo-watermark">DEMO</span></div>
+      <div id="doctor-summary" class="doctor-summary"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn btn-secondary btn-sm" id="btn-copy-handoff">Copy Summary</button>
+        <button class="btn btn-secondary btn-sm" id="btn-export-handoff">Export as PDF</button>
+        <button class="btn btn-secondary btn-sm" id="btn-share-whatsapp">Share WhatsApp</button>
+        <button class="btn btn-secondary btn-sm" id="btn-share-email">Share Email</button>
+        <button class="btn btn-secondary btn-sm" id="btn-download-handoff">Download TXT</button>
+      </div>
     </div>
 
     <!-- Findings Table -->
@@ -495,6 +607,23 @@
         Run an analysis for each person and save their profile here.
         Data stored locally in your browser.
       </p>
+      <div class="dashboard-strip family-strip">
+        <div class="dashboard-panel dashboard-panel--accent">
+          <div class="dashboard-panel-label">Tracked profiles</div>
+          <div class="dashboard-panel-value" id="family-count-dashboard">0</div>
+          <div class="dashboard-panel-meta">Local browser storage</div>
+        </div>
+        <div class="dashboard-panel">
+          <div class="dashboard-panel-label">Consent gate</div>
+          <div class="dashboard-panel-value">On</div>
+          <div class="dashboard-panel-meta">Profiles save only after explicit approval</div>
+        </div>
+        <div class="dashboard-panel">
+          <div class="dashboard-panel-label">Quick action</div>
+          <div class="dashboard-panel-value">Clear</div>
+          <div class="dashboard-panel-meta">Delete all local profiles anytime</div>
+        </div>
+      </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;margin-bottom:16px;">
         <label style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--text-muted);max-width:520px;cursor:pointer;">
           <input type="checkbox" id="family-storage-consent" style="margin-top:2px;">
@@ -529,12 +658,37 @@
 
   </section>
 
+      </div>
+    </div>
+  </div>
+
 </div><!-- /app-wrapper -->
 
 <script>
   // ─── Simple navigation helpers (before modules load) ───────────────────────
+  function updateTopbar(id) {
+    const titleEl = document.getElementById('topbar-title');
+    const subEl = document.getElementById('topbar-sub');
+    if (!titleEl || !subEl) return;
+
+    const activePatient = window.__activePatientName || 'Arjun Sharma';
+
+    const titles = {
+      'section-home': [`${activePatient} — Health Dashboard`, 'Last updated: 14 Apr 2026 · Indian clinical thresholds applied'],
+      'section-upload': ['Add Family Member', 'Upload a lab report or enter values manually'],
+      'section-input': ['Enter Data', 'Manual entry with Indian-specific reference ranges'],
+      'section-results': [`${activePatient} — Clinical Results`, 'Borderline signals, interventions, and trajectory'],
+      'section-family': ['Family Health Dashboard', 'Local browser storage · explicit consent required']
+    };
+
+    const fallback = ['FamilyGuard AI', 'Pre-disease interception engine'];
+    const [title, sub] = titles[id] || fallback;
+    titleEl.textContent = title;
+    subEl.textContent = sub;
+  }
+
   function switchNav(btn) {
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.nav-btn, .nav-item').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const target = btn.dataset.nav;
     document.querySelectorAll('.section').forEach(s => {
@@ -546,6 +700,7 @@
       sec.style.display = 'block';
       sec.classList.add('active');
     }
+    updateTopbar(target);
   }
 
   function switchToSection(id) {
@@ -561,6 +716,10 @@
         sec.style.display = 'block';
         sec.classList.add('active');
       }
+      document.querySelectorAll('.nav-btn, .nav-item').forEach(b => b.classList.remove('active'));
+      const fallbackNav = document.querySelector(`[data-nav="${id}"]`);
+      if (fallbackNav) fallbackNav.classList.add('active');
+      updateTopbar(id);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -573,6 +732,7 @@
     document.getElementById('btn-demo-form')?.addEventListener('click', () => {
       if (window._appRunDemo) window._appRunDemo();
     });
+    updateTopbar('section-home');
   });
 </script>
 
@@ -583,6 +743,13 @@
   import Interventions from './interventions.js';
   import FamilyManager from './familyManager.js';
   import UI from './ui.js';
+  import ClinicalAdvisor from './clinicalAdvisor.js';
+  import Explainability from './explainability.js';
+  import OutcomeSimulator from './outcomeSimulator.js';
+  import LocalizedRecommendations from './localizedRecommendations.js';
+  import ModelPerformance from './modelPerformance.js';
+  import SecurityAudit from './securityAudit.js';
+  import ClinicalValidation from './clinicalValidation.js';
 
   // ─── App State ──────────────────────────────────────────────────────────────
   const AppState = {
@@ -594,16 +761,109 @@
     uploadedBase64: null,
     uploadedMime: null,
     extractionMeta: null,
-    isDemoMode: false
+    isDemoMode: false,
+    demoWatermarkEnabled: true,
+    activeDemoKey: 'arun',
+    performanceMetrics: null,
+    outcomeSimulation: null,
+    advisor: ClinicalAdvisor.getAdvisor()
   };
 
   // ─── Init ───────────────────────────────────────────────────────────────────
   function init() {
     initEventListeners();
+    setDemoWatermark(AppState.demoWatermarkEnabled);
     renderFamilyGrid();
     updateFamilyCount();
+    initCredibilityPanel();
+    initValidationPanel();
+    initCompliancePanel();
+    initPerformanceDashboard();
+    highlightSidebarDemo('arun');
     UI.showNotification('Welcome to FamilyGuard AI — click ▶ Run Demo to see a full analysis', 'info');
     window._appRunDemo = runDemo;
+    window._toggleDemoWatermark = setDemoWatermark;
+  }
+
+  function setDemoWatermark(enabled) {
+    AppState.demoWatermarkEnabled = !!enabled;
+    document.body.classList.toggle('demo-watermark-on', AppState.demoWatermarkEnabled);
+  }
+
+  async function initPerformanceDashboard() {
+    try {
+      const records = await ModelPerformance.loadMockDataset();
+      const metrics = ModelPerformance.calculateMetrics(records);
+      AppState.performanceMetrics = metrics;
+      ModelPerformance.renderMetrics('performance-dashboard', metrics);
+    } catch (err) {
+      console.warn('Performance dashboard unavailable:', err);
+    }
+  }
+
+  function initCredibilityPanel() {
+    const advisor = AppState.advisor;
+    const el = document.getElementById('advisor-panel');
+    if (!el || !advisor) return;
+    el.innerHTML = `
+      <div class="advisor-header">
+        <div class="advisor-avatar">MD</div>
+        <div>
+          <div class="advisor-name">${escHtml(advisor.name)}</div>
+          <div class="advisor-meta">${escHtml(advisor.specialization)} · ${advisor.experienceYears} years</div>
+        </div>
+      </div>
+      <p class="advisor-quote">${escHtml(advisor.verificationQuote)}</p>
+    `;
+  }
+
+  function initCompliancePanel() {
+    const state = SecurityAudit.getState();
+    SecurityAudit.logEvent({ type: 'app_open', detail: 'App loaded in browser session' });
+    renderSecurityPanel(state);
+  }
+
+  function initValidationPanel() {
+    const panel = document.getElementById('validation-panel');
+    if (!panel) return;
+    const packet = ClinicalValidation.getPacket();
+    panel.innerHTML = `
+      <div class="validation-grid">
+        <div class="validation-chip">${escHtml(packet.version)}</div>
+        <div class="validation-chip">Reviewed: ${escHtml(packet.reviewedOn)}</div>
+        <div class="validation-chip">Cycle: ${escHtml(packet.reviewWindow)}</div>
+      </div>
+      <div class="validation-title">Controls completed</div>
+      <ul class="mini-list">
+        ${packet.controls.map(item => `<li>${escHtml(item)}</li>`).join('')}
+      </ul>
+      <div class="validation-title" style="margin-top:10px">Limitations</div>
+      <ul class="mini-list">
+        ${packet.limitations.map(item => `<li>${escHtml(item)}</li>`).join('')}
+      </ul>
+    `;
+  }
+
+  function renderSecurityPanel(state) {
+    const panel = document.getElementById('security-panel');
+    const audit = document.getElementById('audit-log');
+    const reminder = document.getElementById('reminder-list');
+    if (panel) {
+      panel.innerHTML = `
+        <div class="security-pill">AES-style local protection note</div>
+        <div class="security-item">Consent-based sharing for family profiles</div>
+        <div class="security-item">Audit log stored locally in browser only</div>
+        <div class="security-item">No server persistence for demo data</div>
+      `;
+    }
+    if (audit) {
+      const items = (state.auditLog || []).slice(0, 5);
+      audit.innerHTML = items.length ? items.map(item => `<li>${escHtml(item.at)} · ${escHtml(item.type)} · ${escHtml(item.detail || '')}</li>`).join('') : '<li>No audit events yet.</li>';
+    }
+    if (reminder) {
+      const items = (state.reminders || []).slice(0, 5);
+      reminder.innerHTML = items.length ? items.map(item => `<li>${escHtml(item.at)} · ${escHtml(item.title || '')}</li>`).join('') : '<li>No active reminders yet.</li>';
+    }
   }
 
   function initEventListeners() {
@@ -639,6 +899,22 @@
     document.getElementById('btn-save-family')?.addEventListener('click', saveToFamily);
     document.getElementById('btn-export-report')?.addEventListener('click', exportReport);
     document.getElementById('btn-clear-local-data')?.addEventListener('click', clearLocalData);
+    document.getElementById('btn-copy-handoff')?.addEventListener('click', copyHandoffSummary);
+    document.getElementById('btn-export-handoff')?.addEventListener('click', exportHandoffSummary);
+    document.getElementById('btn-share-whatsapp')?.addEventListener('click', shareHandoffWhatsApp);
+    document.getElementById('btn-share-email')?.addEventListener('click', shareHandoffEmail);
+    document.getElementById('btn-download-handoff')?.addEventListener('click', downloadHandoffText);
+    document.getElementById('manual-verify-checkbox')?.addEventListener('change', e => {
+      if (AppState.extractionMeta) {
+        AppState.extractionMeta.verified = !!e.target.checked;
+        if (AppState.extractionMeta.confidence?.percent < 60) {
+          SecurityAudit.logEvent({ type: 'ocr_verify', detail: 'Manual verification toggled after low-confidence extraction' });
+        }
+      }
+    });
+    document.querySelectorAll('.sidebar .family-card[data-demo]').forEach(card => {
+      card.addEventListener('click', () => runSidebarDemo(card.dataset.demo));
+    });
     document.getElementById('extraction-verified')?.addEventListener('change', e => {
       if (AppState.extractionMeta) AppState.extractionMeta.verified = !!e.target.checked;
     });
@@ -753,17 +1029,34 @@
     const box = document.getElementById('extraction-status');
     const confidenceEl = document.getElementById('extraction-confidence');
     const verifyEl = document.getElementById('extraction-verified');
+    const ocrPanel = document.getElementById('ocr-panel');
+    const ocrConfidence = document.getElementById('ocr-confidence');
+    const ocrVerify = document.getElementById('manual-verify-checkbox');
     if (!box || !confidenceEl || !verifyEl) return;
 
     if (!meta) {
       box.style.display = 'none';
       verifyEl.checked = false;
+      if (ocrPanel) ocrPanel.innerHTML = '<div class="ocr-empty">Upload a report to see OCR confidence and fallback guidance.</div>';
+      if (ocrConfidence) ocrConfidence.textContent = 'Confidence: —';
+      if (ocrVerify) ocrVerify.checked = false;
       return;
     }
 
     box.style.display = 'block';
     confidenceEl.textContent = `Confidence: ${meta.bucket} (${meta.percent}% fields extracted)`;
     verifyEl.checked = !!meta.verified;
+    if (ocrPanel) {
+      const low = meta.percent < 60;
+      ocrPanel.innerHTML = `
+        <div class="ocr-row"><strong>Extraction confidence:</strong> ${meta.bucket} (${meta.percent}%)</div>
+        <div class="ocr-row"><strong>Fallback:</strong> ${low ? 'Verify manually before analysis' : 'Extraction acceptable for demo'}</div>
+        <div class="ocr-row"><strong>Action:</strong> ${low ? 'Review the highlighted values and correct them' : 'Proceed to analysis or refine fields if needed'}</div>
+      `;
+      if (ocrConfidence) ocrConfidence.textContent = `Confidence: ${meta.bucket} (${meta.percent}% fields extracted)`;
+      if (ocrVerify) ocrVerify.checked = !!meta.verified;
+      if (low) SecurityAudit.logEvent({ type: 'ocr_low_confidence', detail: `OCR confidence ${meta.percent}%` });
+    }
   }
 
   function validateLabRanges(labs) {
@@ -891,6 +1184,8 @@
       `${profile.age}y · ${profile.gender} · ${profile.diet || 'Mixed diet'}${bmi ? ` · BMI ${bmi.toFixed(1)}` : ''}`;
     document.getElementById('result-risk-level').textContent = riskLevel;
     document.getElementById('result-risk-level').style.color = riskColor;
+    document.getElementById('result-score').textContent = overallScore;
+    document.getElementById('result-borderline-count').textContent = borderlineValues.length;
 
     // Animate gauge
     let cur = 0;
@@ -911,7 +1206,20 @@
 
     renderSignals(narrative?.missed_signals || autoSignals(risk));
     renderInterventions(interventions);
+    renderAutopilot(profile, risk, interventions);
+    renderDoctorSummary(profile, risk, labs, interventions);
     renderFindings(findings);
+    renderExplainability(profile, labs, risk, interventions);
+    renderOutcomeSimulation(profile, labs, risk, interventions);
+    renderLocalizedRecommendations(profile, risk, interventions);
+    renderOCRPanel();
+
+    const followUpLabel = getRetestWindow(risk);
+    SecurityAudit.saveReminder({
+      title: followUpLabel,
+      detail: `${profile.name} · ${riskLevel} risk · follow-up planned from analysis`
+    });
+    renderSecurityPanel(SecurityAudit.getState());
 
     const tlData = narrative?.timeline_risk || autoTimeline(risk);
     tlData.current = overallScore;
@@ -920,6 +1228,166 @@
     document.getElementById('btn-save-family').disabled = false;
     document.getElementById('btn-export-report').disabled = false;
     document.getElementById('family-count-display').textContent = FamilyManager.loadProfiles().length;
+  }
+
+  function renderExplainability(profile, labs, risk, interventions) {
+    const container = document.getElementById('explainability-stack');
+    if (!container) return;
+
+    const thresholdMap = {
+      glucose_fasting: { threshold: 96, condition: 'prediabetes', label: 'Fasting glucose' },
+      hba1c: { threshold: 5.7, condition: 'hba1c', label: 'HbA1c' },
+      cholesterol_total: { threshold: 180, condition: 'cholesterol', label: 'Total cholesterol' },
+      triglycerides: { threshold: 150, condition: 'triglycerides', label: 'Triglycerides' },
+      vitaminD: { threshold: 20, condition: 'vitaminD', label: 'Vitamin D' },
+      vitaminB12: { threshold: 200, condition: 'vitaminB12', label: 'Vitamin B12' },
+      tsh: { threshold: 4.1, condition: 'thyroid', label: 'TSH' }
+    };
+
+    const focusKeys = (risk.borderlineValues?.length ? risk.borderlineValues.map(item => item.key) : risk.findings.map(item => item.key)).slice(0, 3);
+    const items = focusKeys.map(key => {
+      const entry = thresholdMap[key];
+      if (!entry) return null;
+      const rawValue = labs[key];
+      const explanation = Explainability.explainRisk(rawValue, entry.threshold, entry.condition);
+      return `
+        <div class="explain-card">
+          <div class="explain-title">${escHtml(entry.label)}</div>
+          <div class="explain-body"><strong>Why this matters:</strong> ${escHtml(explanation.whyThisMatters)}</div>
+          <div class="explain-body"><strong>Why this recommendation was given:</strong> ${escHtml(explanation.whyRecommendation)}</div>
+        </div>`;
+    }).filter(Boolean);
+
+    const recs = LocalizedRecommendations.getLocalizedRecommendations('urban', risk.riskLevel === 'LOW' ? 'prediabetes' : 'prediabetes');
+    container.innerHTML = `
+      ${items.join('') || '<div class="explain-empty">No borderline values detected, but the top risk markers will still be summarized here after analysis.</div>'}
+      <div class="explain-card explain-card--muted">
+        <div class="explain-title">Localized context</div>
+        <div class="explain-body">${escHtml(recs.join(' '))}</div>
+        <div class="explain-title" style="margin-top:10px">Region-based recommendations</div>
+        <ul class="mini-list">
+          ${recs.map(item => `<li>${escHtml(item)}</li>`).join('')}
+        </ul>
+      </div>`;
+  }
+
+  function renderOutcomeSimulation(profile, labs, risk, interventions) {
+    const container = document.getElementById('outcome-simulator');
+    if (!container) return;
+    const planText = interventions || [];
+    const simulation = OutcomeSimulator.simulateOutcome(labs, planText);
+    AppState.outcomeSimulation = simulation;
+
+    const before = simulation.before || {};
+    const after = simulation.after || {};
+    const rows = simulation.deltas?.slice(0, 5).map(item => `
+      <tr>
+        <td>${escHtml(item.key.replace(/_/g, ' '))}</td>
+        <td>${escHtml(item.before)}</td>
+        <td>${escHtml(item.after)}</td>
+        <td>${item.delta > 0 ? '+' : ''}${escHtml(item.delta)}</td>
+      </tr>`).join('') || '';
+
+    container.innerHTML = `
+      <div class="outcome-summary">
+        <div class="outcome-chip">Before: ${before.riskScore}/100</div>
+        <div class="outcome-chip outcome-chip--accent">After 30 days: ${after.riskScore}/100</div>
+      </div>
+      <div class="outcome-note">${escHtml(simulation.summary)}</div>
+      <div style="overflow-x:auto;margin-top:12px;">
+        <table class="findings-table">
+          <thead><tr><th>Lab</th><th>Before</th><th>After</th><th>Change</th></tr></thead>
+          <tbody>${rows || '<tr><td colspan="4" style="text-align:center;padding:16px;color:var(--text-dim)">No projected change data</td></tr>'}</tbody>
+        </table>
+      </div>`;
+  }
+
+  function renderLocalizedRecommendations(profile, risk, interventions) {
+    const container = document.getElementById('doctor-summary');
+    if (!container) return;
+    const regionAdvice = LocalizedRecommendations.getLocalizedRecommendations('urban', risk.riskLevel === 'LOW' ? 'prediabetes' : 'prediabetes');
+    SecurityAudit.saveReminder({
+      title: 'Daily habit prompt',
+      detail: regionAdvice[0]
+    });
+  }
+
+  function renderOCRPanel() {
+    const panel = document.getElementById('ocr-panel');
+    if (!panel) return;
+    const meta = AppState.extractionMeta;
+    if (!meta) {
+      panel.innerHTML = '<div class="ocr-empty">Upload a report to see OCR confidence and fallback guidance.</div>';
+      return;
+    }
+    const low = meta.confidence?.percent < 60;
+    panel.innerHTML = `
+      <div class="ocr-row"><strong>Source:</strong> ${escHtml(meta.source || 'manual')}</div>
+      <div class="ocr-row"><strong>Confidence:</strong> ${meta.confidence?.bucket || '—'} (${meta.confidence?.percent ?? '—'}%)</div>
+      <div class="ocr-row"><strong>Fallback:</strong> ${low ? 'Verify manually before analysis' : 'Proceed to analysis or refine fields if needed'}</div>`;
+  }
+
+  function copyHandoffSummary() {
+    const text = buildHandoffSummary();
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(() => UI.showNotification('Doctor summary copied', 'success'))
+        .catch(() => prompt('Copy summary', text));
+      return;
+    }
+    prompt('Copy summary', text);
+  }
+
+  function exportHandoffSummary() {
+    if (!AppState.currentRiskResult) {
+      UI.showNotification('Run analysis before exporting the handoff summary.', 'warning');
+      return;
+    }
+    window.print();
+  }
+
+  function shareHandoffWhatsApp() {
+    const text = buildHandoffSummary();
+    const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener');
+    SecurityAudit.logEvent({ type: 'handoff_share', detail: 'Shared handoff via WhatsApp link' });
+  }
+
+  function shareHandoffEmail() {
+    const text = buildHandoffSummary();
+    const subject = encodeURIComponent('FamilyGuard AI Doctor Summary');
+    const body = encodeURIComponent(text);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    SecurityAudit.logEvent({ type: 'handoff_share', detail: 'Shared handoff via email draft' });
+  }
+
+  function downloadHandoffText() {
+    const text = buildHandoffSummary();
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `familyguard_handoff_${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    SecurityAudit.logEvent({ type: 'handoff_export', detail: 'Downloaded handoff TXT file' });
+  }
+
+  function buildHandoffSummary() {
+    if (!AppState.currentProfile || !AppState.currentRiskResult) return 'Run an analysis first.';
+    const { currentProfile: profile, currentRiskResult: risk, currentLabValues: labs } = AppState;
+    const abnormalities = (risk.findings || []).slice(0, 5).map(f => `${f.key.replace(/_/g, ' ')}: ${f.label}`).join('; ');
+    const trends = AppState.outcomeSimulation?.deltas?.slice(0, 3).map(d => `${d.key}: ${d.before} -> ${d.after}`).join('; ') || 'No projected trend data.';
+    const nextTests = getRetestWindow(risk);
+    return [
+      `Patient: ${profile.name}, ${profile.age}y, ${profile.gender}`,
+      `Risk: ${risk.overallScore}/100, ${risk.riskLevel}`,
+      `Key abnormalities: ${abnormalities || 'None'}`,
+      `Trends: ${trends}`,
+      `Suggested next tests: ${nextTests}`
+    ].join('\n');
   }
 
   function renderSignals(signals) {
@@ -959,6 +1427,89 @@
           </div>
         </div>
       </div>`).join('');
+  }
+
+  function getRetestWindow(riskResult) {
+    const { categoryScores = {}, riskLevel = 'MEDIUM' } = riskResult || {};
+    const worstCategory = Object.entries(categoryScores).sort((a, b) => b[1] - a[1])[0]?.[0] || 'metabolic';
+    if (worstCategory === 'thyroid') return 'Retest TSH in 6-12 weeks';
+    if (worstCategory === 'nutritional') return 'Retest vitamins and CBC in 8-12 weeks';
+    if (worstCategory === 'cardiovascular') return 'Retest lipids in 6-8 weeks';
+    if (worstCategory === 'metabolic') return 'Retest glucose and HbA1c in 8-12 weeks';
+    if (riskLevel === 'CRITICAL') return 'Recheck with a physician within 7-14 days';
+    return 'Review again in 30 days';
+  }
+
+  function buildAutopilotPlan(profile, riskResult, interventions) {
+    const topIntervention = interventions?.[0];
+    const focus = topIntervention?.title || 'Stabilize your highest-risk markers';
+    const plan = [
+      {
+        week: 'Week 1',
+        title: 'Stabilize the worst risk factor',
+        action: topIntervention?.action || 'Lock one major change into daily routine and track it.'
+      },
+      {
+        week: 'Week 2',
+        title: 'Reduce daily spikes',
+        action: 'Use simpler meals, a 10-15 minute walk after meals, and consistent sleep timing.'
+      },
+      {
+        week: 'Week 3',
+        title: 'Make the plan measurable',
+        action: 'Track weight, sleep, steps, and symptoms; keep one daily habit score.'
+      },
+      {
+        week: 'Week 4',
+        title: 'Review and retest',
+        action: getRetestWindow(riskResult)
+      }
+    ];
+
+    return { focus, plan };
+  }
+
+  function renderAutopilot(profile, riskResult, interventions) {
+    const metaEl = document.getElementById('autopilot-next');
+    const stepsEl = document.getElementById('autopilot-steps');
+    if (!metaEl || !stepsEl) return;
+
+    const autopilot = buildAutopilotPlan(profile, riskResult, interventions);
+    const nextAction = interventions?.[0]?.action || 'Start with one change you can repeat every day.';
+    const retest = getRetestWindow(riskResult);
+
+    metaEl.innerHTML = `
+      <div class="autopilot-focus">Primary focus: <strong>${escHtml(autopilot.focus)}</strong></div>
+      <div class="autopilot-retest">${escHtml(retest)}</div>
+      <div class="autopilot-next-action">Next best action: ${escHtml(nextAction)}</div>
+    `;
+
+    stepsEl.innerHTML = autopilot.plan.map(step => `
+      <div class="autopilot-step">
+        <div class="autopilot-week">${escHtml(step.week)}</div>
+        <div class="autopilot-body">
+          <div class="autopilot-title">${escHtml(step.title)}</div>
+          <div class="autopilot-action">${escHtml(step.action)}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderDoctorSummary(profile, riskResult, labs, interventions) {
+    const el = document.getElementById('doctor-summary');
+    if (!el) return;
+
+    const abnormal = (riskResult.findings || []).slice(0, 5).map(f => `${f.key.replace(/_/g, ' ')}: ${f.label}`).join(' · ') || 'No abnormal findings detected.';
+    const topIntervention = interventions?.[0];
+    const retest = getRetestWindow(riskResult);
+
+    el.innerHTML = `
+      <p><strong>${escHtml(profile.name || 'Patient')}</strong> has an overall risk score of <strong>${riskResult.overallScore}/100</strong> and is classified as <strong>${escHtml(riskResult.riskLevel)}</strong> risk.</p>
+      <p><strong>Key abnormalities:</strong> ${escHtml(abnormal)}</p>
+      <p><strong>Recommended next step:</strong> ${escHtml(topIntervention?.title || 'Lifestyle modification and physician review')}.</p>
+      <p><strong>Follow-up:</strong> ${escHtml(retest)}.</p>
+      <p class="doctor-note">This summary is for awareness and physician discussion, not diagnosis or treatment.</p>
+    `;
   }
 
   function renderFindings(findings) {
@@ -1010,31 +1561,155 @@
   }
 
   // ─── Demo Mode ──────────────────────────────────────────────────────────────
-  async function runDemo() {
-    UI.showLoader('Loading demo patient: Arjun Sharma...');
+  function getInlineDemoPatients() {
+    return {
+      arun: {
+        profile: {
+          name: 'Arun Sharma',
+          age: 42,
+          gender: 'male',
+          height: 172,
+          weight: 84,
+          sleep: 5.5,
+          stress: 7,
+          activity: 3,
+          diet: 'non-vegetarian'
+        },
+        labValues: {
+          glucose_fasting: 108,
+          hba1c: 5.9,
+          cholesterol_total: 196,
+          cholesterol_ldl: 128,
+          cholesterol_hdl: 38,
+          triglycerides: 178,
+          vitaminD: 14,
+          vitaminB12: 182,
+          tsh: 4.6,
+          hemoglobin: 13.2,
+          creatinine: 1.1,
+          uric_acid: 6.8
+        }
+      },
+      priya: {
+        profile: {
+          name: 'Priya Sharma',
+          age: 38,
+          gender: 'female',
+          height: 161,
+          weight: 58,
+          sleep: 6.8,
+          stress: 5,
+          activity: 6,
+          diet: 'vegetarian'
+        },
+        labValues: {
+          glucose_fasting: 90,
+          hba1c: 5.3,
+          cholesterol_total: 168,
+          cholesterol_ldl: 95,
+          cholesterol_hdl: 53,
+          triglycerides: 118,
+          vitaminD: 24,
+          vitaminB12: 278,
+          tsh: 2.9,
+          hemoglobin: 12.4,
+          creatinine: 0.82,
+          uric_acid: 4.5
+        }
+      },
+      rajan: {
+        profile: {
+          name: 'Rajan Sharma',
+          age: 68,
+          gender: 'male',
+          height: 167,
+          weight: 76,
+          sleep: 6,
+          stress: 6,
+          activity: 2,
+          diet: 'mixed'
+        },
+        labValues: {
+          glucose_fasting: 126,
+          hba1c: 6.6,
+          cholesterol_total: 222,
+          cholesterol_ldl: 152,
+          cholesterol_hdl: 36,
+          triglycerides: 212,
+          vitaminD: 16,
+          vitaminB12: 210,
+          tsh: 5.1,
+          hemoglobin: 12.1,
+          creatinine: 1.28,
+          uric_acid: 7.2
+        }
+      }
+    };
+  }
+
+  function highlightSidebarDemo(key) {
+    const normalized = String(key || '').toLowerCase();
+    document.querySelectorAll('.sidebar .family-card[data-demo]').forEach(card => {
+      card.classList.toggle('is-selected', card.dataset.demo === normalized);
+    });
+  }
+
+  async function runSidebarDemo(key = 'arun') {
+    const normalized = String(key || 'arun').toLowerCase();
+    const lookupKey = normalized === 'arjun' ? 'arun' : normalized;
+    const inlineDemos = getInlineDemoPatients();
+    const selected = inlineDemos[lookupKey];
+
+    if (!selected) {
+      UI.showNotification('Demo profile not found.', 'error');
+      return;
+    }
+
+    UI.showLoader(`Loading demo patient: ${selected.profile.name}...`);
     AppState.isDemoMode = true;
+
     try {
-      const res = await fetch('./demoPatient.json');
-      if (!res.ok) throw new Error('Demo file not found');
-      const demo = await res.json();
+      let demo = selected;
+
+      // Keep rich narrative support for the default Arun demo if file exists.
+      if (lookupKey === 'arun') {
+        try {
+          const res = await fetch('./demoPatient.json');
+          if (res.ok) {
+            const fileDemo = await res.json();
+            demo = {
+              profile: { ...fileDemo.profile, name: 'Arun Sharma' },
+              labValues: fileDemo.labValues,
+              narrative: fileDemo.narrative
+            };
+          }
+        } catch (fileErr) {
+          console.warn('Default demo file unavailable, using inline Arun demo:', fileErr);
+        }
+      }
+
       AppState.currentProfile = demo.profile;
       AppState.currentLabValues = demo.labValues;
+      AppState.activeDemoKey = lookupKey;
+      window.__activePatientName = demo.profile.name;
       AppState.extractionMeta = null;
       showExtractionStatus(null);
       fillForm(demo.profile, demo.labValues);
+      highlightSidebarDemo(lookupKey);
+      updateTopbar('section-home');
+      document.getElementById('topbar-sub').textContent = `Loaded demo profile: ${demo.profile.name} · Indian clinical thresholds applied`;
+      SecurityAudit.logEvent({ type: 'demo_loaded', detail: `Loaded ${demo.profile.name} demo profile` });
       UI.hideLoader();
-      await runAnalysis(demo.profile, demo.labValues, demo.narrative);
+      await runAnalysis(demo.profile, demo.labValues, demo.narrative || null);
     } catch (err) {
-      console.warn('Demo file load failed, using inline data:', err);
-      UI.showLoader('Using inline demo data...');
-      const p = { name:'Arjun Sharma', age:42, gender:'male', height:172, weight:84, sleep:5.5, stress:7, activity:3, diet:'non-vegetarian' };
-      const l = { glucose_fasting:108, hba1c:5.9, cholesterol_total:196, cholesterol_ldl:128, cholesterol_hdl:38, triglycerides:178, vitaminD:14, vitaminB12:182, tsh:4.6, hemoglobin:13.2, creatinine:1.1, uric_acid:6.8 };
-      fillForm(p, l);
-      AppState.currentProfile = p;
-      AppState.currentLabValues = l;
       UI.hideLoader();
-      await runAnalysis(p, l, null);
+      console.error(err);
+      UI.showNotification('Could not load demo profile: ' + err.message, 'error');
     }
+  }
+
+  async function runDemo() {
+    await runSidebarDemo('arun');
   }
 
   function fillForm(p, l) {
@@ -1086,6 +1761,8 @@
     const badges = document.querySelectorAll('#family-count');
     badges.forEach(b => b.textContent = n);
     document.getElementById('family-count-display').textContent = n;
+    document.getElementById('family-count-results').textContent = n;
+    document.getElementById('family-count-dashboard').textContent = n;
   }
 
   function clearLocalData() {
@@ -1117,6 +1794,7 @@
   }
 
   window.updateBMIDisplay = updateBMIDisplay;
+  window.runSidebarDemo = runSidebarDemo;
   init();
 </script>
 
