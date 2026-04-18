@@ -1,0 +1,10 @@
+# Environment files
+.env
+
+# Local dependency/install artifacts
+node_modules/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
