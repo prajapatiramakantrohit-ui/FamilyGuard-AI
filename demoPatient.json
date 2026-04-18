@@ -1,6 +1,6 @@
 {
   "profile": {
-    "name": "Arjun Sharma",
+    "name": "Arun Sharma",
     "age": 42,
     "gender": "male",
     "height": 172,
@@ -25,8 +25,8 @@
     "uric_acid": 6.8
   },
   "narrative": {
-    "summary": "Arjun presents a classic pre-disease pattern seen in urban Indian males in their 40s — multiple borderline values converging simultaneously, each individually 'not alarming' but collectively pointing toward a metabolic storm brewing beneath the surface.",
-    "critical_insight": "The combination of borderline fasting glucose (108 mg/dL), elevated HbA1c (5.9%), low HDL (38 mg/dL), and high triglycerides creates a 'metabolic quartet' that, left unaddressed for 3–5 years, carries a 68% probability of progressing to Type 2 Diabetes and a 45% probability of a cardiovascular event.",
+    "summary": "Arun presents a classic pre-disease pattern seen in urban Indian males in their 40s — multiple borderline values converging simultaneously, each individually 'not alarming' but collectively pointing toward a metabolic storm brewing beneath the surface.",
+    "critical_insight": "The combination of borderline fasting glucose (108 mg/dL), elevated HbA1c (5.9%), low HDL (38 mg/dL), and high triglycerides creates a 'metabolic quartet' that, left unaddressed for 3–5 years, carries a high probability of progressing to Type 2 diabetes and cardiovascular risk.",
     "missed_signals": [
       {
         "signal": "Subclinical Hypothyroidism",

@@ -127,6 +127,39 @@ body::before {
   padding: 24px;
 }
 
+.content > .section {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+}
+
+.grid-2,
+.grid-3 {
+  display: grid;
+  gap: 16px;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-2 > *,
+.grid-3 > * {
+  min-width: 0;
+}
+
+.grid-2 > .card,
+.grid-3 > .card,
+.grid-2 > .dashboard-panel,
+.grid-3 > .dashboard-panel {
+  height: 100%;
+}
+
 .logo {
   padding: 0 8px 18px;
   margin-bottom: 14px;
@@ -338,8 +371,8 @@ button:focus-visible {
   background: var(--surface);
   border: 1px solid rgba(38,50,56,0.08);
   border-radius: var(--radius-lg);
-  padding: 28px;
-  margin-bottom: 20px;
+  padding: 24px;
+  margin-bottom: 18px;
   box-shadow: 0 14px 36px rgba(38,50,56,0.06), inset 0 1px 0 rgba(255,255,255,0.92);
   position: relative;
   overflow: hidden;
@@ -359,12 +392,13 @@ button:focus-visible {
 
 .card-title {
   font-family: var(--display);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   color: var(--text);
   display: flex; align-items: center; gap: 8px;
+  flex-wrap: wrap;
 }
 
 .card-title .icon { font-size: 18px; }
@@ -489,13 +523,25 @@ button:focus-visible {
 
 .section-title {
   font-family: var(--display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   color: var(--text-muted);
   margin: 28px 0 16px;
   display: flex; align-items: center; gap: 10px;
+}
+
+.card p,
+.narrative-summary,
+.narrative-insight,
+.doctor-summary,
+.autopilot-next,
+.int-action,
+.signal-implication,
+.family-meta,
+.dashboard-panel-meta {
+  line-height: 1.7;
 }
 
 .section-title::after {
@@ -605,21 +651,32 @@ button:focus-visible {
   display: flex; align-items: flex-start; gap: 20px;
   margin-bottom: 28px;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.patient-info { flex: 1; }
+.patient-info { flex: 1; min-width: 0; }
 .patient-name {
   font-family: var(--display);
   font-size: 26px;
   font-weight: 800;
   margin-bottom: 4px;
+  line-height: 1.1;
+  word-break: break-word;
 }
 .patient-meta { color: var(--text-muted); font-size: 12px; margin-bottom: 8px; }
 .risk-level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(126,158,134,0.10);
+  color: var(--accent);
   font-family: var(--display);
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 /* ─── Gauge ──────────────────────────────────────────────────────────────────── */
@@ -680,6 +737,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 20px;
+  align-items: start;
 }
 
 .results-grid > :first-child { grid-column: span 5; }
@@ -1204,12 +1262,14 @@ button:focus-visible {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 28px;
+  align-items: stretch;
 }
 
 .stats-row > * { grid-column: span 4; }
 
 .stat-card {
   text-align: center;
+  min-height: 104px;
 }
 
 .stat-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
@@ -1220,6 +1280,7 @@ button:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 22px;
+  align-items: stretch;
 }
 
 .dashboard-panel {
@@ -1256,6 +1317,39 @@ button:focus-visible {
   color: var(--text-muted);
   margin-top: 8px;
   line-height: 1.5;
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.how-it-step {
+  padding: 16px;
+  background: linear-gradient(180deg, #fffefb, #f5f1e8);
+  border: 1px solid rgba(38,50,56,0.08);
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(38,50,56,0.05);
+}
+
+.how-it-step-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.how-it-step-title {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.how-it-step-body {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .advisor-header {
@@ -1376,6 +1470,94 @@ body.demo-watermark-on .demo-watermark { display: inline-flex; align-items: cent
 .ocr-confidence { font-size: 12px; color: var(--text); margin-bottom: 8px; }
 .ocr-verify { display: flex; gap: 8px; align-items: center; font-size: 11px; color: var(--text-muted); }
 
+/* ─── Guided Demo ─────────────────────────────────────────────────────────── */
+.guided-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+}
+
+.guided-overlay.is-open { display: block; }
+
+.guided-backdrop {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.guided-card {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: min(420px, calc(100vw - 32px));
+  background: linear-gradient(180deg, #fffefb, #f4f1e8);
+  border: 1px solid rgba(38, 50, 56, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(19, 29, 33, 0.3);
+  padding: 14px;
+}
+
+.guided-step {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.guided-card h3 {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.guided-card p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.guided-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guided-highlight {
+  position: relative;
+  z-index: 3001 !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95), 0 0 0 6px rgba(58, 110, 255, 0.45) !important;
+  border-radius: 16px;
+  transition: box-shadow 220ms ease;
+}
+
+.guided-tag {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #3a6eff, #2f5de0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3002;
+  box-shadow: 0 8px 20px rgba(58, 110, 255, 0.4);
+}
+
+.guided-tag.is-visible { display: inline-flex; }
+
+body.guided-demo-active {
+  overflow: hidden;
+}
+
 /* ─── UX Utilities ─────────────────────────────────────────────────────────── */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
@@ -1407,6 +1589,12 @@ body.demo-watermark-on .demo-watermark { display: inline-flex; align-items: cent
   .brand { align-items: flex-start; }
   .brand-icon { width: 40px; height: 40px; }
   .main-nav { padding-bottom: 2px; }
+  .guided-card {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    bottom: 12px;
+  }
 }
 
 /* ─── Pulse animation for critical values ────────────────────────────────────── */

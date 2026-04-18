@@ -6,6 +6,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://generativelanguage.googleapis.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
   <title>FamilyGuard AI — Pre-Disease Interception Engine</title>
   <meta name="description" content="AI-powered health risk awareness tool using Indian-standard thresholds. Not a medical diagnosis tool.">
+  <meta name="theme-color" content="#7e9e86">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="FamilyGuard AI">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -72,10 +78,12 @@
     <div class="main-panel">
       <div class="topbar">
         <div>
-          <div class="topbar-title" id="topbar-title">Arjun Sharma — Health Dashboard</div>
-          <div class="topbar-sub" id="topbar-sub">Last updated: 14 Apr 2026 · Indian clinical thresholds applied</div>
+          <div class="topbar-title" id="topbar-title">FamilyGuard AI — Health Dashboard</div>
+          <div class="topbar-sub" id="topbar-sub">Pre-disease interception engine · Indian clinical thresholds applied</div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">
+          <button class="btn" id="btn-guided-tour">Guided Tour</button>
+          <button class="btn" id="btn-install-app" style="display:none">Install App</button>
           <button class="btn" data-nav="section-upload" onclick="switchNav(this)">Upload new report</button>
           <button class="btn btn-primary" onclick="window.print()">Export PDF</button>
         </div>
@@ -172,26 +180,26 @@
     <!-- How It Works -->
     <div class="card">
       <div class="card-title"><span class="icon">⚙️</span> How It Works</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
-        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
-          <div style="font-size:24px;margin-bottom:8px;">📤</div>
-          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">1. Upload</div>
-          <div style="font-size:11px;color:var(--text-muted)">Upload your lab report (PDF/image) or enter values manually</div>
+      <div class="how-it-works-grid">
+        <div class="how-it-step">
+          <div class="how-it-step-icon">📤</div>
+          <div class="how-it-step-title">1. Upload</div>
+          <div class="how-it-step-body">Upload your lab report (PDF/image) or enter values manually.</div>
         </div>
-        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
-          <div style="font-size:24px;margin-bottom:8px;">🧬</div>
-          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">2. Extract</div>
-          <div style="font-size:11px;color:var(--text-muted)">AI extracts all lab values using Indian-standard reference ranges</div>
+        <div class="how-it-step">
+          <div class="how-it-step-icon">🧬</div>
+          <div class="how-it-step-title">2. Extract</div>
+          <div class="how-it-step-body">AI extracts all lab values using Indian-standard reference ranges.</div>
         </div>
-        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
-          <div style="font-size:24px;margin-bottom:8px;">⚡</div>
-          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">3. Analyze</div>
-          <div style="font-size:11px;color:var(--text-muted)">Risk engine scores metabolic, cardiovascular, thyroid & nutritional health</div>
+        <div class="how-it-step">
+          <div class="how-it-step-icon">⚡</div>
+          <div class="how-it-step-title">3. Analyze</div>
+          <div class="how-it-step-body">Risk engine scores metabolic, cardiovascular, thyroid, and nutritional health.</div>
         </div>
-        <div style="padding:16px;background:var(--surface2);border-radius:10px;">
-          <div style="font-size:24px;margin-bottom:8px;">🎯</div>
-          <div style="font-family:var(--display);font-weight:700;margin-bottom:4px;">4. Act</div>
-          <div style="font-size:11px;color:var(--text-muted)">Receive 3 specific, actionable interventions with expected timelines</div>
+        <div class="how-it-step">
+          <div class="how-it-step-icon">🎯</div>
+          <div class="how-it-step-title">4. Act</div>
+          <div class="how-it-step-body">Receive 3 specific, actionable interventions with expected timelines.</div>
         </div>
       </div>
     </div>
@@ -293,7 +301,7 @@
       <div class="form-grid">
         <div class="form-group" style="grid-column: span 2">
           <label for="p-name">Full Name</label>
-          <input type="text" id="p-name" placeholder="e.g. Arjun Sharma">
+          <input type="text" id="p-name" placeholder="e.g. Patient Name">
         </div>
         <div class="form-group">
           <label for="p-age">Age (years)</label>
@@ -664,6 +672,23 @@
 
 </div><!-- /app-wrapper -->
 
+<!-- Guided demo overlay -->
+<div id="guided-overlay" class="guided-overlay" aria-hidden="true">
+  <div class="guided-backdrop"></div>
+  <div class="guided-card" role="dialog" aria-modal="true" aria-labelledby="guided-title">
+    <div class="guided-step" id="guided-step">Step 1 / 1</div>
+    <h3 id="guided-title">Guided Demo</h3>
+    <p id="guided-text">The guided demo explains each part of the product automatically.</p>
+    <div class="guided-actions">
+      <button class="btn btn-secondary btn-sm" id="guided-prev">Previous</button>
+      <button class="btn btn-secondary btn-sm" id="guided-autoplay">Auto Play</button>
+      <button class="btn btn-primary btn-sm" id="guided-next">Next</button>
+      <button class="btn btn-secondary btn-sm" id="guided-close">Close</button>
+    </div>
+  </div>
+  <div id="guided-tag" class="guided-tag" aria-hidden="true"></div>
+</div>
+
 <script>
   // ─── Simple navigation helpers (before modules load) ───────────────────────
   function updateTopbar(id) {
@@ -671,13 +696,14 @@
     const subEl = document.getElementById('topbar-sub');
     if (!titleEl || !subEl) return;
 
-    const activePatient = window.__activePatientName || 'Arjun Sharma';
+    const activePatient = window.__activePatientName || 'FamilyGuard AI';
+    const activeLine = window.__activeDashboardLine || 'Last updated: 14 Apr 2026 · Indian clinical thresholds applied';
 
     const titles = {
-      'section-home': [`${activePatient} — Health Dashboard`, 'Last updated: 14 Apr 2026 · Indian clinical thresholds applied'],
+      'section-home': [`${activePatient} — Health Dashboard`, activeLine],
       'section-upload': ['Add Family Member', 'Upload a lab report or enter values manually'],
       'section-input': ['Enter Data', 'Manual entry with Indian-specific reference ranges'],
-      'section-results': [`${activePatient} — Clinical Results`, 'Borderline signals, interventions, and trajectory'],
+      'section-results': [`${activePatient} — Clinical Results`, activeLine],
       'section-family': ['Family Health Dashboard', 'Local browser storage · explicit consent required']
     };
 
@@ -727,11 +753,21 @@
   // Wire up additional demo buttons
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-demo-hero')?.addEventListener('click', () => {
-      if (window._appRunDemo) window._appRunDemo();
+      if (window._startGuidedDemo) window._startGuidedDemo(true);
+      else if (window._appRunDemo) window._appRunDemo();
     });
     document.getElementById('btn-demo-form')?.addEventListener('click', () => {
-      if (window._appRunDemo) window._appRunDemo();
+      if (window._startGuidedDemo) window._startGuidedDemo(true);
+      else if (window._appRunDemo) window._appRunDemo();
     });
+    document.getElementById('btn-guided-tour')?.addEventListener('click', () => {
+      if (window._startGuidedDemo) window._startGuidedDemo(true);
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js?v=2').catch(err => console.warn('SW registration failed', err));
+    }
+
     updateTopbar('section-home');
   });
 </script>
@@ -769,9 +805,294 @@
     advisor: ClinicalAdvisor.getAdvisor()
   };
 
+  let deferredInstallPrompt = null;
+
+  const GuidedDemo = (() => {
+    const state = {
+      steps: [],
+      index: -1,
+      autoplay: false,
+      timer: null,
+      opened: false,
+      completedActions: new Set(),
+      highlighted: null
+    };
+
+    function init() {
+      state.steps = [
+        {
+          id: 'nav-home',
+          section: 'section-home',
+          selector: '.nav-item[data-nav="section-home"]',
+          tag: '1',
+          title: 'Dashboard Tab',
+          text: 'This is the Dashboard tab. The app starts here with overall context and quick actions.'
+        },
+        {
+          id: 'home',
+          section: 'section-home',
+          selector: '#section-home .hero',
+          tag: '2',
+          title: 'Welcome Dashboard',
+          text: 'This is the home view where users start with upload, manual entry, or demo mode.'
+        },
+        {
+          id: 'nav-upload',
+          section: 'section-upload',
+          selector: '.nav-item[data-nav="section-upload"]',
+          tag: '3',
+          title: 'Upload Tab',
+          text: 'This tab handles report upload. Users can bring in image/PDF lab reports here.'
+        },
+        {
+          id: 'upload-ocr',
+          section: 'section-upload',
+          selector: '#ocr-panel',
+          tag: '4',
+          title: 'OCR Reliability',
+          text: 'The app displays extraction confidence and requires manual verification when confidence is low.'
+        },
+        {
+          id: 'nav-input',
+          section: 'section-input',
+          selector: '.nav-item[data-nav="section-input"]',
+          tag: '5',
+          title: 'Enter Data Tab',
+          text: 'This tab supports manual input with Indian clinical thresholds and plausibility checks.'
+        },
+        {
+          id: 'input-form',
+          section: 'section-input',
+          selector: '#section-input .form-grid',
+          tag: '6',
+          title: 'Patient + Lab Form',
+          text: 'Patient details and lab values can be entered manually, then analyzed with one click.'
+        },
+        {
+          id: 'load-demo',
+          section: 'section-home',
+          selector: '.sidebar .family-card[data-demo="arun"]',
+          tag: '7',
+          title: 'Load Demo Patient',
+          text: 'The app auto-loads Arun with realistic profile and lab values to demonstrate full analysis.',
+          runOnce: true,
+          action: async () => {
+            if (typeof window.runSidebarDemo === 'function') {
+              await window.runSidebarDemo('arun');
+            }
+          }
+        },
+        {
+          id: 'nav-results',
+          section: 'section-results',
+          selector: '.nav-item[data-nav="section-results"]',
+          tag: '8',
+          title: 'Results Tab',
+          text: 'This tab presents risk scoring, explainability, intervention plan, and doctor handoff.'
+        },
+        {
+          id: 'risk-score',
+          section: 'section-results',
+          selector: '#result-score',
+          tag: '9',
+          title: 'Overall Risk Score',
+          text: 'This summarizes health risk from Indian thresholds across all measured markers.'
+        },
+        {
+          id: 'explainability',
+          section: 'section-results',
+          selector: '#explainability-stack',
+          tag: '10',
+          title: 'Explainability Layer',
+          text: 'Each important marker is explained in plain language: why it matters and why the recommendation exists.'
+        },
+        {
+          id: 'outcome',
+          section: 'section-results',
+          selector: '#outcome-simulator',
+          tag: '11',
+          title: '30-Day Outcome Simulation',
+          text: 'The simulator shows directional before-vs-after improvement from the selected intervention plan.'
+        },
+        {
+          id: 'handoff',
+          section: 'section-results',
+          selector: '#doctor-summary',
+          tag: '12',
+          title: 'Doctor Handoff',
+          text: 'Users can copy, export, or share a concise doctor-ready summary from this section.'
+        },
+        {
+          id: 'nav-family',
+          section: 'section-family',
+          selector: '.nav-item[data-nav="section-family"]',
+          tag: '13',
+          title: 'Family Tab',
+          text: 'This tab tracks each family member score and history for ongoing preventive monitoring.'
+        },
+        {
+          id: 'family',
+          section: 'section-family',
+          selector: '#family-grid',
+          tag: '14',
+          title: 'Family Dashboard',
+          text: 'Profiles and score history stay local to the browser, with explicit user consent before saving.'
+        }
+      ];
+
+      document.getElementById('guided-next')?.addEventListener('click', next);
+      document.getElementById('guided-prev')?.addEventListener('click', prev);
+      document.getElementById('guided-close')?.addEventListener('click', close);
+      document.getElementById('guided-autoplay')?.addEventListener('click', toggleAutoplay);
+      document.getElementById('guided-overlay')?.addEventListener('click', event => {
+        if (event.target?.classList?.contains('guided-backdrop')) close();
+      });
+    }
+
+    async function start(autoplay = true) {
+      state.opened = true;
+      state.autoplay = !!autoplay;
+      state.index = -1;
+      state.completedActions.clear();
+      document.body.classList.add('guided-demo-active');
+      document.getElementById('guided-overlay')?.classList.add('is-open');
+      await goTo(0);
+    }
+
+    function close() {
+      stopAutoplay();
+      state.opened = false;
+      clearHighlight();
+      document.body.classList.remove('guided-demo-active');
+      document.getElementById('guided-overlay')?.classList.remove('is-open');
+    }
+
+    async function next() {
+      await goTo(state.index + 1);
+    }
+
+    async function prev() {
+      await goTo(state.index - 1);
+    }
+
+    async function goTo(nextIndex) {
+      if (!state.opened) return;
+      if (nextIndex < 0) nextIndex = 0;
+      if (nextIndex >= state.steps.length) {
+        close();
+        return;
+      }
+
+      stopAutoplay();
+      state.index = nextIndex;
+      const step = state.steps[state.index];
+
+      if (step.section && typeof window.switchToSection === 'function') {
+        window.switchToSection(step.section);
+      }
+
+      if (step.action) {
+        const key = step.id || `step-${state.index}`;
+        if (!step.runOnce || !state.completedActions.has(key)) {
+          await step.action();
+          state.completedActions.add(key);
+        }
+      }
+
+      await wait(280);
+      paint(step);
+
+      if (state.autoplay) {
+        state.timer = setTimeout(() => { next(); }, 4200);
+      }
+    }
+
+    function paint(step) {
+      clearHighlight();
+      const target = document.querySelector(step.selector);
+      const title = document.getElementById('guided-title');
+      const text = document.getElementById('guided-text');
+      const stepEl = document.getElementById('guided-step');
+      const autoBtn = document.getElementById('guided-autoplay');
+
+      if (title) title.textContent = step.title;
+      if (text) text.textContent = step.text;
+      if (stepEl) stepEl.textContent = `Step ${state.index + 1} / ${state.steps.length}`;
+      if (autoBtn) autoBtn.textContent = state.autoplay ? 'Pause' : 'Auto Play';
+
+      if (!target) return;
+      state.highlighted = target;
+      target.classList.add('guided-highlight');
+      target.setAttribute('data-guide-tag', step.tag || String(state.index + 1));
+      target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+
+      const tag = document.getElementById('guided-tag');
+      if (tag) {
+        const rect = target.getBoundingClientRect();
+        tag.textContent = step.tag || String(state.index + 1);
+        tag.style.top = `${Math.max(10, rect.top - 12)}px`;
+        tag.style.left = `${Math.max(10, rect.left - 12)}px`;
+        tag.classList.add('is-visible');
+      }
+    }
+
+    function clearHighlight() {
+      if (state.highlighted) {
+        state.highlighted.classList.remove('guided-highlight');
+        state.highlighted.removeAttribute('data-guide-tag');
+      }
+      const tag = document.getElementById('guided-tag');
+      if (tag) tag.classList.remove('is-visible');
+      state.highlighted = null;
+    }
+
+    function toggleAutoplay() {
+      state.autoplay = !state.autoplay;
+      if (state.autoplay) {
+        state.timer = setTimeout(() => { next(); }, 1600);
+      } else {
+        stopAutoplay();
+      }
+      const autoBtn = document.getElementById('guided-autoplay');
+      if (autoBtn) autoBtn.textContent = state.autoplay ? 'Pause' : 'Auto Play';
+    }
+
+    function stopAutoplay() {
+      if (state.timer) {
+        clearTimeout(state.timer);
+        state.timer = null;
+      }
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    return { init, start, close };
+  })();
+
+  function initInstallPrompt() {
+    const installBtn = document.getElementById('btn-install-app');
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      if (installBtn) installBtn.style.display = 'inline-flex';
+    });
+
+    installBtn?.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installBtn.style.display = 'none';
+    });
+  }
+
   // ─── Init ───────────────────────────────────────────────────────────────────
   function init() {
     initEventListeners();
+    initInstallPrompt();
+    GuidedDemo.init();
     setDemoWatermark(AppState.demoWatermarkEnabled);
     renderFamilyGrid();
     updateFamilyCount();
@@ -782,6 +1103,7 @@
     highlightSidebarDemo('arun');
     UI.showNotification('Welcome to FamilyGuard AI — click ▶ Run Demo to see a full analysis', 'info');
     window._appRunDemo = runDemo;
+    window._startGuidedDemo = (autoplay = true) => GuidedDemo.start(autoplay);
     window._toggleDemoWatermark = setDemoWatermark;
   }
 
@@ -895,7 +1217,7 @@
 
     document.getElementById('btn-extract')?.addEventListener('click', extractLabValues);
     document.getElementById('btn-analyze')?.addEventListener('click', analyzeRisk);
-    document.getElementById('btn-demo')?.addEventListener('click', runDemo);
+    document.getElementById('btn-demo')?.addEventListener('click', () => GuidedDemo.start(true));
     document.getElementById('btn-save-family')?.addEventListener('click', saveToFamily);
     document.getElementById('btn-export-report')?.addEventListener('click', exportReport);
     document.getElementById('btn-clear-local-data')?.addEventListener('click', clearLocalData);
@@ -1178,6 +1500,10 @@
     const { overallScore, riskLevel, categoryScores, findings, borderlineValues } = risk;
     const riskColor = UI.getRiskColor(riskLevel);
     const bmi = risk.bmi;
+
+    window.__activePatientName = profile.name;
+    window.__activeDashboardLine = `${riskLevel} risk · overall score ${overallScore}/100`;
+    updateTopbar('section-results');
 
     document.getElementById('result-name').textContent = profile.name;
     document.getElementById('result-meta').textContent =
@@ -1588,6 +1914,51 @@
           hemoglobin: 13.2,
           creatinine: 1.1,
           uric_acid: 6.8
+        },
+        narrative: {
+          summary: 'Arun presents a classic pre-disease pattern seen in urban Indian males in their 40s - multiple borderline values converging simultaneously, each individually "not alarming" but collectively pointing toward a metabolic storm brewing beneath the surface.',
+          critical_insight: 'The combination of borderline fasting glucose (108 mg/dL), elevated HbA1c (5.9%), low HDL (38 mg/dL), and high triglycerides creates a metabolic quartet that, left unaddressed for 3-5 years, carries a high probability of progression to type 2 diabetes and cardiovascular disease.',
+          missed_signals: [
+            {
+              signal: 'Subclinical Hypothyroidism',
+              value: 'TSH 4.6 mIU/L',
+              implication: 'Marginally elevated TSH is quietly worsening insulin resistance and cholesterol metabolism.'
+            },
+            {
+              signal: 'Severe Vitamin D Deficiency',
+              value: '14 ng/mL (Critical)',
+              implication: 'At this level, vitamin D may be amplifying glucose dysregulation and fatigue.'
+            },
+            {
+              signal: 'Vitamin B12 Deficiency',
+              value: '182 pg/mL (Deficient)',
+              implication: 'B12 deficiency can mask early neuropathy warning signs and worsen low energy.'
+            }
+          ],
+          timeline_risk: { '1_year': 22, '3_years': 48, '5_years': 71, '10_years': 89 },
+          interventions: [
+            {
+              priority: 1,
+              title: 'Metabolic Reset Protocol',
+              action: 'Reduce refined carbohydrates for 90 days and shift toward higher-fiber meals.',
+              impact: 'Helps lower fasting glucose and triglycerides',
+              timeline: 'Results visible in 6-8 weeks'
+            },
+            {
+              priority: 2,
+              title: 'Vitamin D Correction',
+              action: 'Discuss Vitamin D supplementation and daily morning sunlight with a clinician.',
+              impact: 'Supports insulin sensitivity and energy levels',
+              timeline: 'Levels improve in 8-12 weeks'
+            },
+            {
+              priority: 3,
+              title: 'Structured Activity Intervention',
+              action: 'Add brisk post-meal walks and two strength sessions per week.',
+              impact: 'Improves HDL and reduces triglycerides',
+              timeline: 'Lipid improvement in 8-10 weeks'
+            }
+          ]
         }
       },
       priya: {
@@ -1615,6 +1986,46 @@
           hemoglobin: 12.4,
           creatinine: 0.82,
           uric_acid: 4.5
+        },
+        narrative: {
+          summary: 'Priya shows a comparatively stable metabolic profile with only light caution around vitamin D and lifestyle balance.',
+          critical_insight: 'The current values do not point to an immediate risk pattern, but the numbers still justify preventive attention because small drifts in sleep, stress, and vitamin D can change the trajectory quickly.',
+          missed_signals: [
+            {
+              signal: 'Vitamin D Insufficiency',
+              value: '24 ng/mL',
+              implication: 'This is not severe, but it is below the level usually considered comfortable for long-term maintenance.'
+            },
+            {
+              signal: 'Sleep Debt',
+              value: '6.8 hours/night',
+              implication: 'A small sleep deficit can quietly worsen appetite regulation and stress resilience.'
+            }
+          ],
+          timeline_risk: { '1_year': 8, '3_years': 14, '5_years': 19, '10_years': 28 },
+          interventions: [
+            {
+              priority: 1,
+              title: 'Maintain Current Momentum',
+              action: 'Keep the current activity level and protect sleep consistency.',
+              impact: 'Preserves the low-risk trend',
+              timeline: 'Immediate'
+            },
+            {
+              priority: 2,
+              title: 'Vitamin D Maintenance',
+              action: 'Review sunlight exposure and discuss whether supplementation is needed.',
+              impact: 'Prevents drift into deficiency',
+              timeline: 'Review in 6-8 weeks'
+            },
+            {
+              priority: 3,
+              title: 'Annual Screening Routine',
+              action: 'Repeat full screening yearly, or sooner if symptoms change.',
+              impact: 'Early detection of future risk changes',
+              timeline: '12 months'
+            }
+          ]
         }
       },
       rajan: {
@@ -1642,6 +2053,51 @@
           hemoglobin: 12.1,
           creatinine: 1.28,
           uric_acid: 7.2
+        },
+        narrative: {
+          summary: 'Rajan shows a high-risk metabolic pattern with multiple markers moving in the wrong direction at the same time.',
+          critical_insight: 'This profile is not about one abnormal result - it is the combination of elevated glucose, HbA1c, triglycerides, LDL, and low HDL that signals urgent cardiometabolic risk.',
+          missed_signals: [
+            {
+              signal: 'Likely Prediabetes Progression',
+              value: 'Fasting glucose 126 mg/dL',
+              implication: 'This value is at the diabetic threshold and should be reviewed promptly.'
+            },
+            {
+              signal: 'Thyroid Strain',
+              value: 'TSH 5.1 mIU/L',
+              implication: 'A mild thyroid shift can worsen lipids, fatigue, and weight gain.'
+            },
+            {
+              signal: 'Kidney Stress Marker',
+              value: 'Creatinine 1.28 mg/dL',
+              implication: 'This deserves follow-up in context of age and hydration status.'
+            }
+          ],
+          timeline_risk: { '1_year': 38, '3_years': 64, '5_years': 82, '10_years': 94 },
+          interventions: [
+            {
+              priority: 1,
+              title: 'Urgent Metabolic Review',
+              action: 'See a physician soon to confirm glucose status and discuss next steps.',
+              impact: 'Clarifies diabetes risk and treatment urgency',
+              timeline: 'Within 1-2 weeks'
+            },
+            {
+              priority: 2,
+              title: 'Lipid and Diet Reset',
+              action: 'Reduce refined carbs, fried foods, and sugary drinks immediately.',
+              impact: 'Lowers triglycerides and LDL over time',
+              timeline: 'Improvement in 6-8 weeks'
+            },
+            {
+              priority: 3,
+              title: 'Daily Activity Floor',
+              action: 'Commit to a minimum walking target each day and track it visibly.',
+              impact: 'Supports glucose control and cardiovascular conditioning',
+              timeline: 'Visible change in 2-4 weeks'
+            }
+          ]
         }
       }
     };
@@ -1692,12 +2148,12 @@
       AppState.currentLabValues = demo.labValues;
       AppState.activeDemoKey = lookupKey;
       window.__activePatientName = demo.profile.name;
+      window.__activeDashboardLine = `Loaded demo profile: ${demo.profile.name} · ${demo.narrative ? 'Custom narrative enabled' : 'Indian clinical thresholds applied'}`;
       AppState.extractionMeta = null;
       showExtractionStatus(null);
       fillForm(demo.profile, demo.labValues);
       highlightSidebarDemo(lookupKey);
       updateTopbar('section-home');
-      document.getElementById('topbar-sub').textContent = `Loaded demo profile: ${demo.profile.name} · Indian clinical thresholds applied`;
       SecurityAudit.logEvent({ type: 'demo_loaded', detail: `Loaded ${demo.profile.name} demo profile` });
       UI.hideLoader();
       await runAnalysis(demo.profile, demo.labValues, demo.narrative || null);
